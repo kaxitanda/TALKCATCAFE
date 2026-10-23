@@ -1,0 +1,40 @@
+/* ============================================
+   menu.css
+   メニューページ（menu.html）に特有の記述のみを担当する。
+   汎用的なレイアウト・配色（コンテナ幅・見出し・余白・
+   背景の縞模様）に加え、左右分割（左4：右6）と
+   矢印付きカルーセルの配置・装飾も、独自システムページと
+   共通化したためlayout.css／components.css側へ移行済み。
+   ここでは以下のみを扱う。
+   ・商品リストの縦並び
+   ・商品名と価格を同じ行に並べる指定
+   ============================================ */
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 4;
+}
+
+/* 商品名と価格を同じ行の両端に配置する。
+   align-items: baseline により、文字サイズが異なっても
+   文字のベースライン（下端）が揃う。 */
+.menu-list__item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.menu-list__name {
+  font-size: var(--fs-base);
+  color: var(--color-text);
+}
+
+.menu-list__price {
+  font-family: var(--font-accent-en);
+  font-size: var(--fs-base);
+  color: var(--color-accent-blue);
+  white-space: nowrap;
+}

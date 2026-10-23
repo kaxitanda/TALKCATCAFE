@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>運営情報 | 喋る猫カフェ -talk cat cafe- | VRChatロールプレイカフェイベント公式サイト</title>
+  <meta name="description" content="「喋る猫カフェ -TALK CAT CAFE-」の運営グループ情報（正式グループ名・グループリンク・設立日・使用アセット）を掲載しています。">
+
+  <!-- Webフォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Shippori+Mincho:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS（役割ごとに分割。読み込み順が上書きの優先順位に影響します） -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- ============================================
+       ヘッダー（他ページと共通）
+  ============================================ -->
+  <header class="site-header is-transparent">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-header__logo">
+        <!-- 通常時のロゴと、ヒーロー上（透明状態）用の白ロゴ。
+             表示の切り替えはCSS（.is-transparent）で行う。
+             非表示側はdisplay:noneで読み上げ対象から外れるため、
+             両方に同じaltを付与して名称を常に担保する。 -->
+        <img class="site-header__logo-img site-header__logo-img--default" src="assets/images/logo.svg" alt="喋る猫カフェ -talk cat cafe-" width="180" height="59">
+        <img class="site-header__logo-img site-header__logo-img--inverse" src="assets/images/logo-white.svg" alt="喋る猫カフェ -talk cat cafe-" width="180" height="59">
+      </a>
+
+      <nav class="site-nav" aria-label="グローバルナビゲーション">
+        <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-list">
+          <span class="sr-only">メニューを開閉する</span>
+          <span class="site-nav__toggle-bar" aria-hidden="true"></span>
+        </button>
+        <ul class="site-nav__list" id="site-nav-list">
+          <li><a href="concept.html">コンセプト</a></li>
+          <li><a href="menu.html">メニュー</a></li>
+          <li><a href="store.html">店舗</a></li>
+          <li><a href="cast.html">キャスト</a></li>
+          <li><a href="system.html">システム</a></li>
+          <li><a href="guide.html">参加案内</a></li>
+          <li><a href="about.html">運営情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <!-- 次回開催日は main.js 先頭の NEXT_EVENT_DATE から自動で書き込む（全ページ共通）。
+           ここに書いた文言は、JavaScriptが無効な環境でのみ表示される予備の表示。 -->
+      <p class="site-header__badge" data-next-event>次回開催：お知らせをご確認ください</p>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================
+         ページヒーロー（他の下層ページと同じ.hero--subを流用）
+    ============================================ -->
+    <section class="hero hero--sub" aria-label="運営情報ページ ヘッダービジュアル">
+      <div class="hero__media">
+        <img class="hero__image" src="assets/images/hero/hero-about.jpg" alt="">
+      </div>
+
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">About</p>
+        <h1 class="hero__title">運営情報</h1>
+      </div>
+    </section>
+
+    <!-- ============================================
+         運営グループ情報
+         コンセプトページの参加資格・注意事項と同じ
+         .requirements（上罫線で区切った見出し＋本文のブロック）を流用。
+    ============================================ -->
+    <section class="requirements reveal" aria-labelledby="about-title">
+      <div class="requirements__inner">
+        <h2 id="about-title" class="sr-only">運営グループ情報</h2>
+        <div class="requirements__list">
+          <article class="requirements__block">
+            <h3 class="requirements__block-title">正式グループ名</h3>
+            <p class="requirements__block-text">喋る猫カフェ -TALK CAT CAFE-</p>
+          </article>
+          <article class="requirements__block">
+            <h3 class="requirements__block-title">グループリンク</h3>
+            <p class="requirements__block-text">
+              <a href="https://vrc.group/TALKCT.3676" class="link-more" target="_blank" rel="noopener noreferrer">https://vrc.group/TALKCT.3676</a>
+            </p>
+          </article>
+          <article class="requirements__block">
+            <h3 class="requirements__block-title">グループのショートコード</h3>
+            <p class="requirements__block-text">TALKCT.3676</p>
+          </article>
+          <article class="requirements__block">
+            <h3 class="requirements__block-title">設立日</h3>
+            <p class="requirements__block-text"><time datetime="2026-10-20">2026年10月20日</time></p>
+          </article>
+          <article class="requirements__block">
+            <h3 class="requirements__block-title">アセットリスト</h3>
+            <!-- 開閉はHTML標準の<details>／<summary>で行う（JavaScript不要）。
+                 アセットを追加する場合は、.accordion__itemの<li>を1つ複製し、
+                 名前（.accordion__name）とURL（hrefと表示テキストの両方）を書き換える。 -->
+            <details class="accordion">
+              <summary class="accordion__summary">一覧を表示</summary>
+              <ul class="accordion__list">
+                <li class="accordion__item">
+                  <p class="accordion__name">Cafe FourPoint by Coquelicotz</p>
+                  <a href="https://booth.pm/ja/items/7601688" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/7601688</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">VRC Latte Art バリスタセット（VRChat Worldギミック）</p>
+                  <a href="https://booth.pm/ja/items/7656169" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/7656169</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">【VRChat】VRC Tea Time 紅茶セット（Worldギミック）</p>
+                  <a href="https://booth.pm/ja/items/5112372" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/5112372</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">【VRChat想定】贅沢な朝食（61点 / 107パターン）</p>
+                  <a href="https://booth.pm/ja/items/5697548" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/5697548</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">【VRChat想定】マイデコパフェ（85点）</p>
+                  <a href="https://booth.pm/ja/items/7959271" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/7959271</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">【VRChat想定】飲めるお酒</p>
+                  <a href="https://booth.pm/ja/items/3999585" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/3999585</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">純喫茶風ドリンク3点セット【メロンソーダなどカラバリ7種！】</p>
+                  <a href="https://booth.pm/ja/items/4930086" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/4930086</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">【Udonギミック】オムライス＆ケチャップギミック【VRChat】</p>
+                  <a href="https://booth.pm/ja/items/6486879" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/6486879</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">スイーツビュッフェ10点セット　PC/Android両対応　お皿に盛って食べられるワールドギミックのおまけつき Sweets Set</p>
+                  <a href="https://booth.pm/ja/items/4165022" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/4165022</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">ヨドコロちゃんの権限コントローラー</p>
+                  <a href="https://booth.pm/ja/items/7174370" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/7174370</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">【VRChat】VRC Tea Time 夏 - 涼やかガラスとアイスティー（DLC/Summer）</p>
+                  <a href="https://booth.pm/ja/items/8882685" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/8882685</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">ObonEasy & StickyTable [VRChat/U#]</p>
+                  <a href="https://booth.pm/ja/items/6650795" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/6650795</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">3Dモデル「imagePad」+ VRChat Udon用ギミック</p>
+                  <a href="https://booth.pm/ja/items/4573315" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/4573315</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">食べられる！ちゃおちゅ～ぶ！ VRChat想定</p>
+                  <a href="https://booth.pm/ja/items/8606472" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/8606472</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">ワールド用小物！干渉ねこじゃらし【VRChat】</p>
+                  <a href="https://booth.pm/ja/items/8056419" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/8056419</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">[Free] Filamented Standard for Unity</p>
+                  <a href="https://booth.pm/ja/items/3250389" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/3250389</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">CQ Simple Gimmicks/VRChat向けシンプルなギミック集</p>
+                  <a href="https://booth.pm/ja/items/6544667" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/6544667</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">UdonChips StarterSet【UdonChips】</p>
+                  <a href="https://booth.pm/ja/items/3060394" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/3060394</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">【VRChat】YamaPlayer - VRChat向け動画プレイヤー【Video Player】</p>
+                  <a href="https://booth.pm/ja/items/4768863" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/4768863</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">QvPen</p>
+                  <a href="https://booth.pm/ja/items/1555789" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/1555789</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">【無料/QvPen用】QvPenの太さを個々人が自由にできるスライダー（QvPenSizeChanger）</p>
+                  <a href="https://booth.pm/ja/items/8395292" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/8395292</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">Fukuro Udon</p>
+                  <a href="https://github.com/mimyquality/FukuroUdon/wiki" class="accordion__link" target="_blank" rel="noopener noreferrer">https://github.com/mimyquality/FukuroUdon/wiki</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">【3Dモデル】卓上ベル</p>
+                  <a href="https://booth.pm/ja/items/5761165" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/5761165</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">CQ_Books_5th</p>
+                  <a href="https://booth.pm/ja/items/6164819" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/6164819</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">16:9サイズ立て看板</p>
+                  <a href="https://booth.pm/ja/items/6236873" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/6236873</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">【Blender】 へそ天猫の間接照明　Indirect Lighting for "hesoten" Cat</p>
+                  <a href="https://booth.pm/ja/items/7795231" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/7795231</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">【Blender】ごめん寝ネコの間接照明 Indirect lighting for Sorry Sleeping Cats【VRChat】</p>
+                  <a href="https://booth.pm/ja/items/6681726" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/6681726</a>
+                </li>
+                <li class="accordion__item">
+                  <p class="accordion__name">【Blender】猫の間接照明 indirect lighting for cats【VRChat】</p>
+                  <a href="https://booth.pm/ja/items/6657334" class="accordion__link" target="_blank" rel="noopener noreferrer">https://booth.pm/ja/items/6657334</a>
+                </li>
+              </ul>
+            </details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================
+       フッター（他ページと共通）
+  ============================================ -->
+  <footer class="site-footer" id="contact">
+    <div class="site-footer__inner">
+      <img src="assets/images/logo-white.svg" alt="喋る猫カフェ -talk cat cafe-" class="site-footer__logo" width="180" height="59">
+
+      <ul class="site-footer__sns">
+        <li>
+          <a href="https://x.com/talkcatcafe_VR" class="social-icon" aria-label="Twitter（新X）" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/X_logo_2023.svg" alt="" width="16" height="16">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/talkcatcafe/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/Instagram_Glyph_Black.svg" alt="" width="16" height="16">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@talkcatcafe" class="social-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/youtube-123.svg" alt="" width="20" height="20">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@talkcatcafe" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/tik-tok.svg" alt="" width="20" height="20">
+          </a>
+        </li>
+      </ul>
+
+      <nav class="site-footer__nav" aria-label="フッターナビゲーション">
+        <ul class="site-footer__nav-list">
+          <li><a href="concept.html">コンセプト</a></li>
+          <li><a href="menu.html">メニュー</a></li>
+          <li><a href="store.html">店舗</a></li>
+          <li><a href="cast.html">キャスト</a></li>
+          <li><a href="system.html">システム</a></li>
+          <li><a href="guide.html">参加案内</a></li>
+          <li><a href="about.html">運営情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <p class="site-footer__copyright">&copy; 2026 喋る猫カフェ -talk cat cafe-</p>
+    </div>
+  </footer>
+
+  <div class="paw-trail" aria-hidden="true"></div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

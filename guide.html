@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参加案内 | 喋る猫カフェ -talk cat cafe- | VRChatロールプレイカフェイベント公式サイト</title>
+  <meta name="description" content="「喋る猫カフェ」へのご来店方法、参加条件・禁止事項・注意事項をご案内します。">
+
+  <!-- Webフォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Shippori+Mincho:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS（役割ごとに分割。読み込み順が上書きの優先順位に影響します） -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- ============================================
+       ヘッダー（他ページと共通）
+  ============================================ -->
+  <header class="site-header is-transparent">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-header__logo">
+        <!-- 通常時のロゴと、ヒーロー上（透明状態）用の白ロゴ。
+             表示の切り替えはCSS（.is-transparent）で行う。
+             非表示側はdisplay:noneで読み上げ対象から外れるため、
+             両方に同じaltを付与して名称を常に担保する。 -->
+        <img class="site-header__logo-img site-header__logo-img--default" src="assets/images/logo.svg" alt="喋る猫カフェ -talk cat cafe-" width="180" height="59">
+        <img class="site-header__logo-img site-header__logo-img--inverse" src="assets/images/logo-white.svg" alt="喋る猫カフェ -talk cat cafe-" width="180" height="59">
+      </a>
+
+      <nav class="site-nav" aria-label="グローバルナビゲーション">
+        <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-list">
+          <span class="sr-only">メニューを開閉する</span>
+          <span class="site-nav__toggle-bar" aria-hidden="true"></span>
+        </button>
+        <ul class="site-nav__list" id="site-nav-list">
+          <li><a href="concept.html">コンセプト</a></li>
+          <li><a href="menu.html">メニュー</a></li>
+          <li><a href="store.html">店舗</a></li>
+          <li><a href="cast.html">キャスト</a></li>
+          <li><a href="system.html">システム</a></li>
+          <li><a href="guide.html">参加案内</a></li>
+          <li><a href="about.html">運営情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <!-- 次回開催日は main.js 先頭の NEXT_EVENT_DATE から自動で書き込む（全ページ共通）。
+           ここに書いた文言は、JavaScriptが無効な環境でのみ表示される予備の表示。 -->
+      <p class="site-header__badge" data-next-event>次回開催：お知らせをご確認ください</p>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================
+         ページヒーロー（他の下層ページと同じ.hero--subを流用）
+    ============================================ -->
+    <section class="hero hero--sub" aria-label="参加案内ページ ヘッダービジュアル">
+      <div class="hero__media">
+        <img class="hero__image" src="assets/images/hero/hero-guide.jpg" alt="">
+      </div>
+
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">Guide</p>
+        <h1 class="hero__title">参加案内</h1>
+      </div>
+    </section>
+
+    <!-- ============================================
+         導入文（中央配置。コンセプトページと同じ.page-introを流用）
+    ============================================ -->
+    <section class="page-intro reveal" aria-label="参加案内の導入">
+      <div class="page-intro__inner">
+        <p class="page-intro__lead">
+          本イベントにご来店するにあたってのご案内です。
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         参加方法・参加条件・禁止事項・注意事項（4ブロック）
+         コンセプトページと同じ.requirements（上罫線で区切った見出し＋本文）を流用。
+         ブロックを追加する場合は.requirements__blockの<article>を複製する。
+    ============================================ -->
+    <section class="requirements reveal" aria-labelledby="guide-title">
+      <div class="requirements__inner">
+        <h2 id="guide-title" class="sr-only">参加案内</h2>
+        <div class="requirements__list">
+          <article class="requirements__block">
+            <h3 class="requirements__block-title">参加方法</h3>
+            <p class="requirements__block-text">事前にVRChatグループ<a href="https://vrc.group/TALKCT.3676">「喋る猫カフェ -TALK CAT CAFE-」</a>に参加申請をお送りください。<br>
+              当日、お時間になりましたらグループインスタンスへご来店ください。</p>
+          </article>
+          <article class="requirements__block">
+            <h3 class="requirements__block-title">参加条件</h3>
+            <p class="requirements__block-text">参加者は、以下の条件を満たすものとします。<br>
+          ・VRChatグループ「喋る猫カフェ」に加入していること<br>
+          ・Udon Chipsを用いたイベント進行にご協力いただけること<br>
+          ・ご来店の際は、必ず人間のアバターでお越しいただくこと（カジュアルな私服等でのご来店を推奨します）<br>
+          ・使用アバターの容量が50MB以下であること<br>
+          ・PC環境であること（Quest,Androidは未対応です）<br>
+          ・VRChatの利用規約およびCommunity Guidelinesを遵守していること<br>
+          別途、運営が入場に適さないと判断した場合は、入場をお断りする場合があります
+          </p>
+          </article>
+          <article class="requirements__block">
+            <h3 class="requirements__block-title">アバターに関する規定</h3>
+            <p class="requirements__block-text">以下に該当するアバターでのご来店は、お断りする場合がございますのでご了承ください。<br>
+          ・過度な露出<br>
+          ・派手な衣装<br>
+          ・義手義足の範疇を逸脱したサイボーグ要素<br>
+          ・獣人・動物・ケモノを強く想起させる要素（ケモミミ、尻尾等はOKです）<br>
+          ・欠損等のゴア表現<br>
+          ・版権および違法にパブリック化されたアバター<br>
+          ・ワールド全体に影響を及ぼすギミックを搭載されたアバター<br>
+          ・その他、運営が世界観を著しく損なうと判断したアバター</p>
+          </article>
+          <article class="requirements__block">
+            <h3 class="requirements__block-title">禁止事項</h3>
+            <p class="requirements__block-text">本イベントでは、以下の行為を禁止します。<br>
+          ・暴言、誹謗中傷、差別的発言その他他者を著しく不快にさせる言動<br>
+          ・性的な言動、露骨な性的表現、いわゆる下ネタ等の発言<br>
+          ・政治、宗教、特定の思想信条に関する主張や勧誘<br>
+          ・商業目的の宣伝、勧誘、物品販売<br>
+          ・過度な音量、フラッシュ、点滅等、視覚・聴覚に強い負荷をかける行為<br>
+          ・ワールドやアバターの不具合を意図的に利用した荒らし行為<br>
+          ・当たり判定やコライダーを利用した進路妨害、押し出し等の迷惑行為<br>
+          ・未成年者に対する不適切な発言・行為<br>
+          ・薬物や違法行為を助長、賛美する発言<br>
+          ・他の参加者またはスタッフへの執拗な接触、粘着行為<br>
+          ・出会い目的での接触<br>
+          ・イベント開催時間中のスタッフとのフレンド交換<br>
+          ・無銭飲食、注文を伴わない居座り<br>
+          <br>
+          本規約に違反した場合、運営は状況に応じて以下の措置を取ることがあります。<br>
+          ・口頭での注意<br>
+          ・イベントからの一時退場<br>
+          ・イベントへの入場制限、出入り禁止（出禁）<br>
+          重大な違反、または安全上緊急性が高いと運営が判断した場合は、事前の警告なく上記の措置を行うことがあります。<br>
+          キック、BAN等の対応は、運営の判断により実施されます。
+          </p>
+          </article>
+          <article class="requirements__block">
+            <h3 class="requirements__block-title">注意事項</h3>
+            <p class="requirements__block-text">・本イベントはロールプレイを重視したカフェイベントです。世界観を尊重した言動にご協力ください。<br>
+            ・スタッフの業務の妨げとなる過度な要求はお控えください。<br>
+            ・スタッフとのツーショット撮影、グループ撮影、および撫でる等の接触行為は別途サービスとして提供しておりますので、必ず確認をお願いします。<br>
+            ・イベント内での撮影は周りに配慮いただきながら行ってください。<br>
+            ・イベント内での録画・配信は必ず事前に問い合わせを行ってください。<br>
+            ・他の参加者やスタッフが映り込む場合は、事前の配慮に努めてください。<br>
+            ・撮影データについても、公開の際は最大限の配慮をお願いします。<br>
+            ・他の参加者やスタッフに対し、現実の個人情報（本名、住所、連絡先等）を執拗に聞き出す行為を禁止します。<br>
+            ・スタッフや他の参加者のVRChatアカウントに関する非公開情報を、本人の許可なく公開しないでください。<br>
+            ・参加者間、または参加者とスタッフとの間でトラブルが発生した場合は、当事者間で解決を図ろうとせず、速やかにスタッフへご報告ください。<br>
+            ・スタッフからの案内、注意、誘導があった場合は、これに従っていただくようお願いします。<br>
+            ・参加者は、自身のVRChatアカウント、使用機器、通信環境等について、自己の責任で管理するものとします。<br>
+            ・参加者個人の判断によって発生したトラブルについて、運営がすべての責任を負うものではありません。<br>
+            ・本規約に定めのない事項については、参加者の安全およびイベントの円滑な運営を最優先として、運営が合理的に判断します。
+</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================
+       フッター（他ページと共通）
+  ============================================ -->
+  <footer class="site-footer" id="contact">
+    <div class="site-footer__inner">
+      <img src="assets/images/logo-white.svg" alt="喋る猫カフェ -talk cat cafe-" class="site-footer__logo" width="180" height="59">
+
+      <ul class="site-footer__sns">
+        <li>
+          <a href="https://x.com/talkcatcafe_VR" class="social-icon" aria-label="Twitter（新X）" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/X_logo_2023.svg" alt="" width="16" height="16">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/talkcatcafe/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/Instagram_Glyph_Black.svg" alt="" width="16" height="16">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@talkcatcafe" class="social-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/youtube-123.svg" alt="" width="20" height="20">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@talkcatcafe" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/tik-tok.svg" alt="" width="20" height="20">
+          </a>
+        </li>
+      </ul>
+
+      <nav class="site-footer__nav" aria-label="フッターナビゲーション">
+        <ul class="site-footer__nav-list">
+          <li><a href="concept.html">コンセプト</a></li>
+          <li><a href="menu.html">メニュー</a></li>
+          <li><a href="store.html">店舗</a></li>
+          <li><a href="cast.html">キャスト</a></li>
+          <li><a href="system.html">システム</a></li>
+          <li><a href="guide.html">参加案内</a></li>
+          <li><a href="about.html">運営情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <p class="site-footer__copyright">&copy; 2026 喋る猫カフェ -talk cat cafe-</p>
+    </div>
+  </footer>
+
+  <div class="paw-trail" aria-hidden="true"></div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

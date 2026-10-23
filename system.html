@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>独自システム | 喋る猫カフェ -talk cat cafe- | VRChatロールプレイカフェイベント公式サイト</title>
+  <meta name="description" content="「喋る猫カフェ」で、より本物のカフェらしい体験をお楽しみいただくための独自のロールプレイシステムをご紹介します。">
+
+  <!-- Webフォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Shippori+Mincho:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS（役割ごとに分割。読み込み順が上書きの優先順位に影響します） -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <!-- このページに特有の記述のみを担当する個別CSS -->
+  <link rel="stylesheet" href="css/system.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ============================================
+       ヘッダー（他ページと共通）
+  ============================================ -->
+  <header class="site-header is-transparent">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-header__logo">
+        <!-- 通常時のロゴと、ヒーロー上（透明状態）用の白ロゴ。
+             表示の切り替えはCSS（.is-transparent）で行う。
+             非表示側はdisplay:noneで読み上げ対象から外れるため、
+             両方に同じaltを付与して名称を常に担保する。 -->
+        <img class="site-header__logo-img site-header__logo-img--default" src="assets/images/logo.svg" alt="喋る猫カフェ -talk cat cafe-" width="180" height="59">
+        <img class="site-header__logo-img site-header__logo-img--inverse" src="assets/images/logo-white.svg" alt="喋る猫カフェ -talk cat cafe-" width="180" height="59">
+      </a>
+
+      <nav class="site-nav" aria-label="グローバルナビゲーション">
+        <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-list">
+          <span class="sr-only">メニューを開閉する</span>
+          <span class="site-nav__toggle-bar" aria-hidden="true"></span>
+        </button>
+        <ul class="site-nav__list" id="site-nav-list">
+          <li><a href="concept.html">コンセプト</a></li>
+          <li><a href="menu.html">メニュー</a></li>
+          <li><a href="store.html">店舗</a></li>
+          <li><a href="cast.html">キャスト</a></li>
+          <li><a href="system.html">システム</a></li>
+          <li><a href="guide.html">参加案内</a></li>
+          <li><a href="about.html">運営情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <!-- 次回開催日は main.js 先頭の NEXT_EVENT_DATE から自動で書き込む（全ページ共通）。
+           ここに書いた文言は、JavaScriptが無効な環境でのみ表示される予備の表示。 -->
+      <p class="site-header__badge" data-next-event>次回開催：お知らせをご確認ください</p>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================
+         ページヒーロー（他の下層ページと同じ.hero--subを流用）
+    ============================================ -->
+    <section class="hero hero--sub" aria-label="独自システムページ ヘッダービジュアル">
+      <div class="hero__media">
+        <img class="hero__image" src="assets/images/hero/hero-system.jpg" alt="">
+      </div>
+
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">System</p>
+        <h1 class="hero__title">独自システム</h1>
+      </div>
+    </section>
+
+    <!-- ============================================
+         システム1
+         構造はメニューページの.menu-category__◯◯と同一。
+         左：見出し＋説明文（.digest__leadを流用）
+         右：カルーセル（画像・YouTube埋め込み・画像の3枚）
+         ※現在は1枚目の画像のみ表示中。2枚目・3枚目と矢印ボタンは
+           コメントアウトしており、コメントを外せばカルーセルに戻る
+           （CSS・main.jsはカルーセルの設定のまま変更していない）。
+    ============================================ -->
+    <section class="system-category reveal" id="system-01" aria-labelledby="system-01-title">
+      <div class="system-category__inner">
+        <div class="system-category__text">
+          <h2 id="system-01-title" class="system-category__title">
+            <span class="system-category__title-en">System 01</span>
+            Udon Chips導入
+          </h2>
+          <p class="digest__lead">
+            本イベントはUdon Chipsが導入されており、店内では所持UdonChipsを使用して商品のやり取りをします。<br>
+            入場の際に固定Chipsをお渡ししており、滞在時間に影響して増えていきます。うまく活用してお楽しみください。<br>
+            無銭飲食は禁止とさせていただいております。
+          </p>
+        </div>
+        <div class="system-category__carousel" data-carousel>
+          <ul class="system-category__carousel-track" data-carousel-track>
+            <li class="system-category__carousel-slide is-active"><img src="assets/images/system/system-01-a.jpg" alt="" loading="lazy"></li>
+            <!-- 【一時停止中】コンテンツ補充後にカルーセルへ戻す際は、このコメントを外す
+            <li class="system-category__carousel-slide">
+              <iframe src="https://www.youtube.com/embed/xxxxxxxxxxx" title="仮システム1の紹介動画" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </li>
+            <li class="system-category__carousel-slide"><img src="assets/images/system/system-01-b.jpg" alt="" loading="lazy"></li>
+            -->
+          </ul>
+          <!-- 【一時停止中】矢印ボタン（カルーセルへ戻す際は、このコメントを外す）
+          <button type="button" class="system-category__carousel-arrow system-category__carousel-arrow--prev" data-carousel-prev aria-label="前のスライドへ">
+            <span aria-hidden="true">&lsaquo;</span>
+          </button>
+          <button type="button" class="system-category__carousel-arrow system-category__carousel-arrow--next" data-carousel-next aria-label="次のスライドへ">
+            <span aria-hidden="true">&rsaquo;</span>
+          </button>
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         システム2
+    ============================================ -->
+    <section class="system-category reveal" id="system-02" aria-labelledby="system-02-title">
+      <div class="system-category__inner">
+        <div class="system-category__text">
+          <h2 id="system-02-title" class="system-category__title">
+            <span class="system-category__title-en">System 02</span>
+            チェキシステム
+          </h2>
+          <p class="digest__lead">
+            その場で落書きが出来るチェキを提供しています。<br>
+            キャストがお客様のために描いた世界に1枚だけのチェキをぜひお持ち帰りください。
+          </p>
+        </div>
+        <div class="system-category__carousel" data-carousel>
+          <ul class="system-category__carousel-track" data-carousel-track>
+            <li class="system-category__carousel-slide is-active"><img src="assets/images/system/system-02-a.jpg" alt="" loading="lazy"></li>
+            <!-- 【一時停止中】コンテンツ補充後にカルーセルへ戻す際は、このコメントを外す
+            <li class="system-category__carousel-slide">
+              <iframe src="https://www.youtube.com/embed/xxxxxxxxxxx" title="仮システム2の紹介動画" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </li>
+            <li class="system-category__carousel-slide"><img src="assets/images/system/system-02-b.jpg" alt="" loading="lazy"></li>
+            -->
+          </ul>
+          <!-- 【一時停止中】矢印ボタン（カルーセルへ戻す際は、このコメントを外す）
+          <button type="button" class="system-category__carousel-arrow system-category__carousel-arrow--prev" data-carousel-prev aria-label="前のスライドへ">
+            <span aria-hidden="true">&lsaquo;</span>
+          </button>
+          <button type="button" class="system-category__carousel-arrow system-category__carousel-arrow--next" data-carousel-next aria-label="次のスライドへ">
+            <span aria-hidden="true">&rsaquo;</span>
+          </button>
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         システム3
+    ============================================ -->
+    <section class="system-category reveal" id="system-03" aria-labelledby="system-03-title">
+      <div class="system-category__inner">
+        <div class="system-category__text">
+          <h2 id="system-03-title" class="system-category__title">
+            <span class="system-category__title-en">System 03</span>
+            昼夜営業
+          </h2>
+          <p class="digest__lead">
+            開催日によって外の景色が昼と夜に変わります。<br>
+            是非ふたつの顔を見せるカフェをお楽しみください。
+          </p>
+        </div>
+        <div class="system-category__carousel" data-carousel>
+          <ul class="system-category__carousel-track" data-carousel-track>
+            <li class="system-category__carousel-slide is-active"><img src="assets/images/system/system-03-a.jpg" alt="" loading="lazy"></li>
+            <!-- 【一時停止中】コンテンツ補充後にカルーセルへ戻す際は、このコメントを外す
+            <li class="system-category__carousel-slide">
+              <iframe src="https://www.youtube.com/embed/xxxxxxxxxxx" title="仮システム3の紹介動画" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </li>
+            <li class="system-category__carousel-slide"><img src="assets/images/system/system-03-b.jpg" alt="" loading="lazy"></li>
+            -->
+          </ul>
+          <!-- 【一時停止中】矢印ボタン（カルーセルへ戻す際は、このコメントを外す）
+          <button type="button" class="system-category__carousel-arrow system-category__carousel-arrow--prev" data-carousel-prev aria-label="前のスライドへ">
+            <span aria-hidden="true">&lsaquo;</span>
+          </button>
+          <button type="button" class="system-category__carousel-arrow system-category__carousel-arrow--next" data-carousel-next aria-label="次のスライドへ">
+            <span aria-hidden="true">&rsaquo;</span>
+          </button>
+          -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================
+       フッター（他ページと共通）
+  ============================================ -->
+  <footer class="site-footer" id="contact">
+    <div class="site-footer__inner">
+      <img src="assets/images/logo-white.svg" alt="喋る猫カフェ -talk cat cafe-" class="site-footer__logo" width="180" height="59">
+
+      <ul class="site-footer__sns">
+        <li>
+          <a href="https://x.com/talkcatcafe_VR" class="social-icon" aria-label="Twitter（新X）" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/X_logo_2023.svg" alt="" width="16" height="16">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/talkcatcafe/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/Instagram_Glyph_Black.svg" alt="" width="16" height="16">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@talkcatcafe" class="social-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/youtube-123.svg" alt="" width="20" height="20">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@talkcatcafe" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/tik-tok.svg" alt="" width="20" height="20">
+          </a>
+        </li>
+      </ul>
+
+      <nav class="site-footer__nav" aria-label="フッターナビゲーション">
+        <ul class="site-footer__nav-list">
+          <li><a href="concept.html">コンセプト</a></li>
+          <li><a href="menu.html">メニュー</a></li>
+          <li><a href="store.html">店舗</a></li>
+          <li><a href="cast.html">キャスト</a></li>
+          <li><a href="system.html">システム</a></li>
+          <li><a href="guide.html">参加案内</a></li>
+          <li><a href="about.html">運営情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <p class="site-footer__copyright">&copy; 2026 喋る猫カフェ -talk cat cafe-</p>
+    </div>
+  </footer>
+
+  <div class="paw-trail" aria-hidden="true"></div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

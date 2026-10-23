@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>喋る猫カフェ -talk cat cafe- | VRChatロールプレイカフェイベント公式サイト</title>
+  <meta name="description" content="高層ビルに囲まれた交差点の一角にたたずむ、二足歩行の猫たちが働くカフェ「喋る猫カフェ -talk cat cafe-」。VRChatにて隔週開催のロールプレイカフェイベント公式サイトです。">
+
+  <!-- Webフォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Shippori+Mincho:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS（役割ごとに分割。読み込み順が上書きの優先順位に影響します） -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ============================================
+       ヘッダー
+       ロゴは正式データ（AI形式）納品後に差し替え。
+       ワードマーク自体が画像のため、アクセシビリティ上の
+       名称担保は img の alt 属性で行う。
+  ============================================ -->
+  <header class="site-header is-transparent">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-header__logo">
+        <!-- 通常時のロゴと、ヒーロー上（透明状態）用の白ロゴ。
+             表示の切り替えはCSS（.is-transparent）で行う。
+             非表示側はdisplay:noneで読み上げ対象から外れるため、
+             両方に同じaltを付与して名称を常に担保する。 -->
+        <img class="site-header__logo-img site-header__logo-img--default" src="assets/images/logo.svg" alt="喋る猫カフェ -talk cat cafe-" width="180" height="59">
+        <img class="site-header__logo-img site-header__logo-img--inverse" src="assets/images/logo-white.svg" alt="喋る猫カフェ -talk cat cafe-" width="180" height="59">
+      </a>
+
+      <nav class="site-nav" aria-label="グローバルナビゲーション">
+        <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-list">
+          <span class="sr-only">メニューを開閉する</span>
+          <span class="site-nav__toggle-bar" aria-hidden="true"></span>
+        </button>
+        <ul class="site-nav__list" id="site-nav-list">
+          <li><a href="concept.html">コンセプト</a></li>
+          <li><a href="menu.html">メニュー</a></li>
+          <li><a href="store.html">店舗</a></li>
+          <li><a href="cast.html">キャスト</a></li>
+          <li><a href="system.html">システム</a></li>
+          <li><a href="guide.html">参加案内</a></li>
+          <li><a href="about.html">運営情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <!-- 次回開催日は main.js 先頭の NEXT_EVENT_DATE から自動で書き込む（全ページ共通）。
+           ここに書いた文言は、JavaScriptが無効な環境でのみ表示される予備の表示。 -->
+      <p class="site-header__badge" data-next-event>次回開催：お知らせをご確認ください</p>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================
+         ファーストビュー（ヒーロー）
+    ============================================ -->
+    <section class="hero" aria-label="ファーストビュー">
+      <div class="hero__media">
+        <video
+          class="hero__video"
+          autoplay
+          muted
+          loop
+          playsinline>
+          <source src="assets/videos/hero.webm" type="video/webm">
+        </video>
+      </div>
+
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">VRChat ロールプレイカフェイベント</p>
+        <!-- 店名は専用ロゴ画像で表示する（白版・暗いヒーロー上に配置）。
+             見出しとしての名称は img の alt で担保する。
+             大きさはindex.cssの.hero__logoで指定する。 -->
+        <h1 class="hero__title">
+          <img class="hero__logo" src="assets/images/logo-hero.svg" alt="喋る猫カフェ -talk cat cafe-">
+        </h1>
+        <p class="hero__lead">高層ビルに囲まれた交差点の一角。<br>二足歩行の猫たちが働くカフェへ、ようこそ。</p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         お知らせ（最新情報を横断的に表示）
+    ============================================ -->
+<section class="news" id="news" aria-labelledby="news-title">
+  <div class="news__inner">
+    <h2 id="news-title" class="sr-only">お知らせ</h2>
+    <div class="news__card">
+      <ul class="news__list">
+        <li class="news__item">
+          <time class="news__date" datetime="2026-09-23">2026.09.23</time>
+          <p class="news__text"><a href="news-001.html" class="news__link">第一回・第二回クローズドプレオープンについて</a></p>
+        </li>
+        <li class="news__item">
+          <time class="news__date" datetime="2026-09-23">2026.09.23</time>
+          <p class="news__text"><a href="news-000.html" class="news__link">喋る猫カフェ -TALK CAT CAFE- 営業開始のお知らせ</a></p>
+        </li>
+      </ul>
+      <a href="news.html" class="btn btn--primary news__cta">お知らせ一覧を見る</a>
+    </div>
+  </div>
+</section>
+
+    <!-- ============================================
+         コンセプト ダイジェスト
+    ============================================ -->
+    <section class="digest concept-digest reveal" id="concept-digest" aria-labelledby="concept-digest-title">
+      <div class="digest__inner">
+        <h2 id="concept-digest-title" class="section-title">
+          <span class="section-title__en">Concept</span>
+          コンセプト
+        </h2>
+        <p class="digest__lead">
+          高層ビルに囲まれたビル街の交差点。<br>その一角に店を構える「喋る猫カフェ」は隔週2回、<br>猫たちの接客を受けながらゆったりと過ごすロールプレイカフェイベントです。
+        </p>
+        <a href="concept.html" class="link-more">コンセプトを見る</a>
+      </div>
+    </section>
+
+    <!-- ============================================
+         メニュー ダイジェスト
+    ============================================ -->
+    <section class="digest menu-digest reveal" id="menu-digest" aria-labelledby="menu-digest-title">
+      <div class="digest__inner">
+        <h2 id="menu-digest-title" class="section-title">
+          <span class="section-title__en">Menu</span>
+          メニュー
+        </h2>
+        <div class="menu-marquee" aria-label="料理紹介の一覧（横スクロール）">
+          <div class="menu-marquee__track">
+            <ul class="menu-marquee__group">
+              <li class="menu-digest__item">
+                <a href="menu.html">
+                  <img src="assets/images/top/menu-coffee.jpg" alt="コーヒー" loading="lazy">
+                  <p class="menu-digest__name">Coffee</p>
+                </a>
+              </li>
+              <li class="menu-digest__item">
+                <a href="menu.html">
+                  <img src="assets/images/top/menu-tea.jpg" alt="紅茶" loading="lazy">
+                  <p class="menu-digest__name">Tea</p>
+                </a>
+              </li>
+              <li class="menu-digest__item">
+                <a href="menu.html">
+                  <img src="assets/images/top/menu-omelette-rice.jpg" alt="オムライス" loading="lazy">
+                  <p class="menu-digest__name">Omelette Rice</p>
+                </a>
+              </li>
+              <li class="menu-digest__item">
+                <a href="menu.html">
+                  <img src="assets/images/top/menu-cake.jpg" alt="ケーキ" loading="lazy">
+                  <p class="menu-digest__name">Cake</p>
+                </a>
+              </li>
+              <li class="menu-digest__item">
+                <a href="menu.html">
+                  <img src="assets/images/top/menu-parfait.jpg" alt="パフェ" loading="lazy">
+                  <p class="menu-digest__name">Parfait</p>
+                </a>
+              </li>
+              <li class="menu-digest__item">
+                <a href="menu.html">
+                  <img src="assets/images/top/menu-food.jpg" alt="目玉焼き" loading="lazy">
+                  <p class="menu-digest__name">FOOD</p>
+                </a>
+              </li>
+              <li class="menu-digest__item">
+                <a href="menu.html">
+                  <img src="assets/images/top/menu-special.jpg" alt="エクストラ" loading="lazy">
+                  <p class="menu-digest__name">Extra</p>
+                </a>
+              </li>
+            </ul>
+            <!-- 無限ループに見せるための複製グループ。
+                 スクリーンリーダーには読み上げさせず（aria-hidden）、
+                 キーボードのTabキーでも通過できないようにする（tabindex="-1"）。 -->
+            <ul class="menu-marquee__group" aria-hidden="true">
+              <li class="menu-digest__item">
+                <a href="menu.html" tabindex="-1">
+                  <img src="assets/images/top/menu-coffee.jpg" alt="" loading="lazy">
+                  <p class="menu-digest__name">Coffee</p>
+                </a>
+              </li>
+              <li class="menu-digest__item">
+                <a href="menu.html" tabindex="-1">
+                  <img src="assets/images/top/menu-tea.jpg" alt="" loading="lazy">
+                  <p class="menu-digest__name">Tea</p>
+                </a>
+              </li>
+              <li class="menu-digest__item">
+                <a href="menu.html" tabindex="-1">
+                  <img src="assets/images/top/menu-omelette-rice.jpg" alt="" loading="lazy">
+                  <p class="menu-digest__name">Omelette Rice</p>
+                </a>
+              </li>
+              <li class="menu-digest__item">
+                <a href="menu.html" tabindex="-1">
+                  <img src="assets/images/top/menu-cake.jpg" alt="" loading="lazy">
+                  <p class="menu-digest__name">Cake</p>
+                </a>
+              </li>
+              <li class="menu-digest__item">
+                <a href="menu.html" tabindex="-1">
+                  <img src="assets/images/top/menu-parfait.jpg" alt="" loading="lazy">
+                  <p class="menu-digest__name">Parfait</p>
+                </a>
+              </li>
+              <li class="menu-digest__item">
+                <a href="menu.html" tabindex="-1">
+                  <img src="assets/images/top/menu-food.jpg" alt="" loading="lazy">
+                  <p class="menu-digest__name">FOOD</p>
+                </a>
+              </li>
+              <li class="menu-digest__item">
+                <a href="menu.html" tabindex="-1">
+                  <img src="assets/images/top/menu-special.jpg" alt="" loading="lazy">
+                  <p class="menu-digest__name">Extra</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <a href="menu.html" class="btn btn--primary digest__cta">メニューを見る</a>
+      </div>
+    </section>
+
+    <!-- ============================================
+         キャスト紹介 ダイジェスト
+    ============================================ -->
+    <section class="digest cast-digest reveal" id="cast-digest" aria-labelledby="cast-digest-title">
+      <div class="digest__inner">
+        <h2 id="cast-digest-title" class="section-title">
+          <span class="section-title__en">Cast</span>
+          店員紹介
+        </h2>
+        <ul class="cast-digest__list">
+          <li class="cast-digest__item">
+            <img src="assets/images/cast/staff-01.png" alt="雪白" loading="lazy">
+          </li>
+          <li class="cast-digest__item">
+            <img src="assets/images/cast/staff-02.png" alt="どうぶつ" loading="lazy">
+          </li>
+          <li class="cast-digest__item">
+            <img src="assets/images/cast/staff-03.png" alt="リトゥス" loading="lazy">
+          </li>
+        </ul>
+        <a href="cast.html" class="btn btn--primary digest__cta">店員紹介を見る</a>
+      </div>
+    </section>
+
+    <!-- ============================================
+         独自システム ダイジェスト
+    ============================================ -->
+    <section class="digest system-digest reveal" id="system-digest" aria-labelledby="system-digest-title">
+      <div class="digest__inner">
+        <h2 id="system-digest-title" class="section-title">
+          <span class="section-title__en">System</span>
+          独自システムの紹介
+        </h2>
+        <p class="digest__lead">
+          より本物のカフェらしい体験をお楽しみいただくため、<br>当イベントでは独自のロールプレイシステムをご用意しています。
+        </p>
+        <a href="system.html" class="link-more">独自システムを見る</a>
+      </div>
+    </section>
+
+    <!-- ============================================
+         店舗紹介 ダイジェスト
+    ============================================ -->
+    <section class="digest store-digest reveal" id="store-digest" aria-labelledby="store-digest-title">
+      <div class="digest__inner">
+        <h2 id="store-digest-title" class="section-title">
+          <span class="section-title__en">Store</span>
+          店舗紹介
+        </h2>
+        <img src="assets/images/top/store.jpg" alt="ビル街の交差点に佇む店舗外観" class="store-digest__image" loading="lazy">
+        <a href="store.html" class="link-more">店舗紹介を見る</a>
+      </div>
+    </section>
+
+   <!-- ============================================
+        情報＆アクセス（左：文章／右：画像）
+   ============================================ -->
+   <section class="digest info-digest reveal" id="info-digest" aria-labelledby="info-digest-title">
+     <div class="info-digest__inner">
+       <div class="info-digest__text">
+         <h2 id="info-digest-title" class="section-title">
+           <span class="section-title__en">Info &amp; Access</span>
+           情報＆アクセス
+         </h2>
+         <a href="about.html" class="link-more">運営情報を見る</a>
+         <a href="guide.html" class="link-more">参加案内を見る</a>
+       </div>
+       <img src="assets/images/top/info-access.jpg" alt="店内の様子" class="info-digest__image" loading="lazy">
+     </div>
+   </section>
+
+  </main>
+
+  <!-- ============================================
+       フッター
+  ============================================ -->
+  <footer class="site-footer" id="contact">
+    <div class="site-footer__inner">
+      <img src="assets/images/logo-white.svg" alt="喋る猫カフェ -talk cat cafe-" class="site-footer__logo" width="180" height="59">
+
+      <ul class="site-footer__sns">
+        <li>
+          <a href="https://x.com/talkcatcafe_VR" class="social-icon" aria-label="Twitter（新X）" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/X_logo_2023.svg" alt="" width="16" height="16">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/talkcatcafe/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/Instagram_Glyph_Black.svg" alt="" width="16" height="16">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@talkcatcafe" class="social-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/youtube-123.svg" alt="" width="20" height="20">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@talkcatcafe" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/tik-tok.svg" alt="" width="20" height="20">
+          </a>
+        </li>
+      </ul>
+ 
+     <nav class="site-footer__nav" aria-label="フッターナビゲーション">
+       <ul class="site-footer__nav-list">
+         <li><a href="concept.html">コンセプト</a></li>
+         <li><a href="menu.html">メニュー</a></li>
+         <li><a href="store.html">店舗</a></li>
+         <li><a href="cast.html">キャスト</a></li>
+         <li><a href="system.html">システム</a></li>
+         <li><a href="guide.html">参加案内</a></li>
+         <li><a href="about.html">運営情報</a></li>
+         <li><a href="contact.html">お問い合わせ</a></li>
+       </ul>
+     </nav>
+
+
+      <p class="site-footer__copyright">&copy; 2026 喋る猫カフェ -talk cat cafe-</p>
+    </div>
+  </footer>
+
+  <!-- カスタムカーソル演出用の要素（実装はJS挙動フェーズにて） -->
+  <div class="paw-trail" aria-hidden="true"></div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

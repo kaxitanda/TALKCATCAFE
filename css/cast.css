@@ -1,0 +1,76 @@
+/* ============================================
+   cast.css
+   キャスト紹介ページ（cast.html）に特有の記述のみを担当する。
+   写真グリッド自体はトップページの.cast-digest__listと全く
+   同じ見た目のため、layout.css／components.css側の既存
+   セレクタへ統合済み。ここでは「拡大写真＋プロフィール文」
+   という、このページに固有のモーダル内レイアウトのみを扱う。
+   ============================================ */
+ /* ---------- キャスト一覧：フィルタートグルと写真グリッドの構造 ----------
+    .cast-gallery__innerはこのページに固有の要素のため、
+    「フィルタートグルと写真グリッドを縦に並べ、間隔を持たせる」
+    という構造も、共通CSS（layout.css）ではなくここに記述する。 */
+ .cast-gallery__inner {
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-5);
+ }
+
+ /* フィルタートグルの中央配置も、このページに限った要望のため、
+    共通コンポーネント（.filter-toggle）自体は変更せず、
+    .cast-gallery__inner配下に限定した子孫セレクタで上書きする。
+    これにより、同じ.filter-toggleを共有するメニューページの
+    フード切り替えボタンには一切影響しない。 */
+ .cast-gallery__inner .filter-toggle {
+   justify-content: center;
+ }
+
+
+/* ---------- キャストプロフィールモーダル ---------- */
+.cast-modal__content {
+  position: relative;
+  display: flex;
+  gap: var(--space-5);
+  max-width: 800px;
+  max-height: 90vh;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transform: scale(0.96);
+  transition: transform var(--transition-base);
+}
+.cast-modal.is-open .cast-modal__content {
+  transform: scale(1);
+}
+
+.cast-modal__image {
+  width: 320px;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.cast-modal__profile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-5) var(--space-5) 0;
+  overflow-y: auto;
+}
+
+.cast-modal__name {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: var(--color-main-dark);
+}
+.cast-modal__role {
+  font-size: var(--fs-sm);
+  color: var(--color-accent-green);
+}
+.cast-modal__bio {
+  font-size: var(--fs-sm);
+  line-height: 1.9;
+  color: var(--color-text);
+  white-space: pre-line;
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>喋る猫カフェ -TALK CAT CAFE- 営業開始のお知らせ | お知らせ | 喋る猫カフェ -talk cat cafe- | VRChatロールプレイカフェイベント公式サイト</title>
+  <meta name="description" content="VRChatイベントグループ「喋る猫カフェ -TALK CAT CAFE-」の活動開始のお知らせです。">
+
+  <!-- Webフォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Shippori+Mincho:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS（役割ごとに分割。読み込み順が上書きの優先順位に影響します） -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <!-- お知らせ関連ページ（一覧・記事）に特有の記述のみを担当する個別CSS -->
+  <link rel="stylesheet" href="css/news.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- ============================================
+       ヘッダー（他ページと共通）
+  ============================================ -->
+  <header class="site-header is-transparent">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-header__logo">
+        <!-- 通常時のロゴと、ヒーロー上（透明状態）用の白ロゴ。
+             表示の切り替えはCSS（.is-transparent）で行う。
+             非表示側はdisplay:noneで読み上げ対象から外れるため、
+             両方に同じaltを付与して名称を常に担保する。 -->
+        <img class="site-header__logo-img site-header__logo-img--default" src="assets/images/logo.svg" alt="喋る猫カフェ -talk cat cafe-" width="180" height="59">
+        <img class="site-header__logo-img site-header__logo-img--inverse" src="assets/images/logo-white.svg" alt="喋る猫カフェ -talk cat cafe-" width="180" height="59">
+      </a>
+
+      <nav class="site-nav" aria-label="グローバルナビゲーション">
+        <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-list">
+          <span class="sr-only">メニューを開閉する</span>
+          <span class="site-nav__toggle-bar" aria-hidden="true"></span>
+        </button>
+        <ul class="site-nav__list" id="site-nav-list">
+          <li><a href="concept.html">コンセプト</a></li>
+          <li><a href="menu.html">メニュー</a></li>
+          <li><a href="store.html">店舗</a></li>
+          <li><a href="cast.html">キャスト</a></li>
+          <li><a href="system.html">システム</a></li>
+          <li><a href="guide.html">参加案内</a></li>
+          <li><a href="about.html">運営情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <!-- 次回開催日は main.js 先頭の NEXT_EVENT_DATE から自動で書き込む（全ページ共通）。
+           ここに書いた文言は、JavaScriptが無効な環境でのみ表示される予備の表示。 -->
+      <p class="site-header__badge" data-next-event>次回開催：お知らせをご確認ください</p>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================
+         ページヒーロー（他の下層ページと同じ.hero--subを流用）
+         ヒーロー画像は記事ごとに差し替える（例：assets/images/news/news-001.jpg）。
+         同じ画像を、お知らせ一覧（news.html）のカードのサムネイルにも使う。
+    ============================================ -->
+    <section class="hero hero--sub" aria-label="お知らせ記事ページ ヘッダービジュアル">
+      <div class="hero__media">
+        <img class="hero__image" src="assets/images/news/news-000.jpg" alt="">
+      </div>
+
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">News</p>
+        <h1 class="hero__title">お知らせ</h1>
+      </div>
+    </section>
+
+    <!-- ============================================
+         記事本文（汎用ひな形）
+         新しい記事を作る場合は、このファイルを複製して
+         news-001.html のような連番のファイル名で保存し、以下を書き換える。
+         ・<title> と <meta name="description">
+         ・ヒーロー画像（.hero__image の src）
+         ・日付（<time>のdatetimeと表示の両方）
+         ・記事タイトル（.news-article__title）
+         ・本文（.news-article__body の中身）
+         本文で使える要素：段落<p>／小見出し<h3>／画像<img>／箇条書き<ul>／リンク<a>
+         本文の画像は assets/images/news/news-001-01.jpg のように「記事番号-連番」で命名する。
+         ヒーロー画像の初期値は共通の assets/images/hero/hero-news.jpg。
+         あわせて news.html（カード1枚）と index.html のお知らせ欄（1行）に追加する。
+    ============================================ -->
+    <article class="news-article reveal">
+      <div class="news-article__inner">
+        <header class="news-article__header">
+          <time class="news__date" datetime="2026-09-23">2026.09.23</time>
+          <h2 class="news-article__title">喋る猫カフェ -TALK CAT CAFE- 営業開始のお知らせ</h2>
+        </header>
+
+        <div class="news-article__body">
+          <p>VRChatイベントグループ「喋る猫カフェ -TALK CAT CAFE-」の活動が開始されました。<br>
+            「喋る猫カフェ」は現代を舞台にした、二足歩行の人語が理解でき喋ることが出来る猫が働くカフェという想定のロールプレイ重視イベントです。<br>
+            おしゃべりな猫達と一緒に皆さんとお会いできる日を待ち遠しく思っています。
+          </p>
+          <p>
+            現在はクローズドプレオープンの実施を予定しており、グランドオープンは2027年初旬を目標としております。<br>
+            ホームページ・各種SNSにて最新情報をお伝えいたしますので楽しみにお待ちください。
+          </p>
+
+        </div>
+
+        <a href="news.html" class="link-more">お知らせ一覧へ戻る</a>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- ============================================
+       フッター（他ページと共通）
+  ============================================ -->
+  <footer class="site-footer" id="contact">
+    <div class="site-footer__inner">
+      <img src="assets/images/logo-white.svg" alt="喋る猫カフェ -talk cat cafe-" class="site-footer__logo" width="180" height="59">
+
+      <ul class="site-footer__sns">
+        <li>
+          <a href="https://x.com/talkcatcafe_VR" class="social-icon" aria-label="Twitter（新X）" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/X_logo_2023.svg" alt="" width="16" height="16">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/talkcatcafe/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/Instagram_Glyph_Black.svg" alt="" width="16" height="16">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@talkcatcafe" class="social-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/youtube-123.svg" alt="" width="20" height="20">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@talkcatcafe" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/tik-tok.svg" alt="" width="20" height="20">
+          </a>
+        </li>
+      </ul>
+
+      <nav class="site-footer__nav" aria-label="フッターナビゲーション">
+        <ul class="site-footer__nav-list">
+          <li><a href="concept.html">コンセプト</a></li>
+          <li><a href="menu.html">メニュー</a></li>
+          <li><a href="store.html">店舗</a></li>
+          <li><a href="cast.html">キャスト</a></li>
+          <li><a href="system.html">システム</a></li>
+          <li><a href="guide.html">参加案内</a></li>
+          <li><a href="about.html">運営情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <p class="site-footer__copyright">&copy; 2026 喋る猫カフェ -talk cat cafe-</p>
+    </div>
+  </footer>
+
+  <div class="paw-trail" aria-hidden="true"></div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

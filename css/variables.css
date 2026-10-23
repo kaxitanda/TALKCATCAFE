@@ -1,0 +1,48 @@
+:root{
+   --color-base: #FAF6EF;
+   --color-main-dark: #3D2420;
+   --color-accent-green: #4A5B52;
+   --color-accent-blue: #2E3A4F;
+
+   --color-surface: #FFFFFF;
+   --color-surface-alt: #F1EAD9;
+   --color-text: var(--color-main-dark);
+   --color-text-inverse: var(--color-base);
+   --color-border: rgba(61, 36, 32, 0.15);
+   --color-overlay: rgba(31, 24, 20, 0.55);
+   --color-overlay-strong: rgba(31, 24, 20, 0.92);
+
+   --font-heading: 'Shippori Mincho', serif;
+   --font-accent-en: 'EB Garamond', serif;
+   --font-body: 'Zen Kaku Gothic New',sans-serif;
+
+   --fs-xs: 0.75rem;
+   --fs-sm: 0.875rem;
+   --fs-base: 1rem;
+   --fs-md: 1.125rem;
+   --fs-lg: 1.5rem;
+   --fs-xl: 2rem;
+
+   --fs-hero: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+   
+   --space-1: 0.25rem;
+   --space-2: 0.5rem;
+   --space-3: 1rem;
+   --space-4: 1.5rem;
+   --space-5: 2rem;
+   --space-6: 3rem;
+   --space-7: 4rem;
+   --space-8: 6rem;
+
+   --radius-sm: 4px;
+   --radius-md: 8px;
+   --radius-lg: 20px;
+   --radius-full: 999px;
+
+   --transition-base: 0.3s ease;
+   --transition-slow: 0.6s ease;
+
+   --z-header: 100;
+   --z-lightbox: 500;
+   --z-cursor: 9999;
+}

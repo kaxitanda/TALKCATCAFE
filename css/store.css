@@ -1,0 +1,25 @@
+/* ============================================
+   store.css
+   店舗紹介ページ（store.html）に特有の記述のみを担当する。
+   汎用的な余白・コンテナ幅・ライトボックスの部品自体は
+   layout.css／components.css側に既に用意されているため、
+   ここでは「フォトギャラリーを2列グリッドで並べる」という
+   このページに固有のレイアウトのみを扱う。
+   grid-template-columns: repeat(2, 1fr) は行数を指定していないため、
+   <li>を追加するだけで自動的に段が増える（拡張性の確保）。
+   ============================================ */
+ .store-gallery__inner {
+   padding-inline: var(--space-4);
+ }
+.store-gallery__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+.store-gallery__item img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}

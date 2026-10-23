@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>キャスト | 喋る猫カフェ -talk cat cafe- | VRChatロールプレイカフェイベント公式サイト</title>
+  <meta name="description" content="「喋る猫カフェ」の店員・裏方キャストをご紹介します。">
+
+  <!-- Webフォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Shippori+Mincho:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS（役割ごとに分割。読み込み順が上書きの優先順位に影響します） -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <!-- このページに特有の記述のみを担当する個別CSS -->
+  <link rel="stylesheet" href="css/cast.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ============================================
+       ヘッダー（他ページと共通・変更なし）
+  ============================================ -->
+  <header class="site-header is-transparent">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-header__logo">
+        <!-- 通常時のロゴと、ヒーロー上（透明状態）用の白ロゴ。
+             表示の切り替えはCSS（.is-transparent）で行う。
+             非表示側はdisplay:noneで読み上げ対象から外れるため、
+             両方に同じaltを付与して名称を常に担保する。 -->
+        <img class="site-header__logo-img site-header__logo-img--default" src="assets/images/logo.svg" alt="喋る猫カフェ -talk cat cafe-" width="180" height="59">
+        <img class="site-header__logo-img site-header__logo-img--inverse" src="assets/images/logo-white.svg" alt="喋る猫カフェ -talk cat cafe-" width="180" height="59">
+      </a>
+
+      <nav class="site-nav" aria-label="グローバルナビゲーション">
+        <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-list">
+          <span class="sr-only">メニューを開閉する</span>
+          <span class="site-nav__toggle-bar" aria-hidden="true"></span>
+        </button>
+        <ul class="site-nav__list" id="site-nav-list">
+          <li><a href="concept.html">コンセプト</a></li>
+          <li><a href="menu.html">メニュー</a></li>
+          <li><a href="store.html">店舗</a></li>
+          <li><a href="cast.html">キャスト</a></li>
+          <li><a href="system.html">システム</a></li>
+          <li><a href="guide.html">参加案内</a></li>
+          <li><a href="about.html">運営情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <!-- 次回開催日は main.js 先頭の NEXT_EVENT_DATE から自動で書き込む（全ページ共通）。
+           ここに書いた文言は、JavaScriptが無効な環境でのみ表示される予備の表示。 -->
+      <p class="site-header__badge" data-next-event>次回開催：お知らせをご確認ください</p>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================
+         ページヒーロー（他の下層ページと同じ.hero--subを流用）
+    ============================================ -->
+    <section class="hero hero--sub" aria-label="キャスト紹介ページ ヘッダービジュアル">
+      <div class="hero__media">
+        <img class="hero__image" src="assets/images/hero/hero-cast.jpg" alt="">
+      </div>
+
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">Cast</p>
+        <h1 class="hero__title">キャスト</h1>
+      </div>
+    </section>
+
+    <!-- ============================================
+         キャスト一覧（店員／裏方の切り替えつき、3列×可変段）
+    ============================================ -->
+    <section class="cast-gallery reveal" aria-labelledby="cast-gallery-title">
+      <div class="cast-gallery__inner">
+        <h2 id="cast-gallery-title" class="sr-only">キャスト紹介</h2>
+
+        <div class="filter-toggle" data-cast-filter role="group" aria-label="店員／裏方の表示切り替え">
+          <button type="button" class="filter-toggle__btn is-active" data-filter="staff">店員</button>
+          <button type="button" class="filter-toggle__btn" data-filter="backstage">裏方</button>
+        </div>
+
+        <ul class="cast-gallery__list" data-cast-filter-list>
+          <li class="cast-gallery__item" data-role="staff">
+            <button type="button" class="lightbox-trigger" data-cast-trigger
+              data-cast-src="assets/images/cast/staff-01.png"
+              data-cast-name="雪白"
+              data-cast-role="バイトリーダー"
+              data-cast-bio="好きなもの：魚、ラーメン、インテリア&#10;苦手なもの：野菜、勉強&#10;年齢：24歳&#10;人間社会に生きる猫でも珍しい猫又の一族、長い間自堕落に生活していた結果両親から勘当されカフェを経営している友人を紹介してもらいそこで働くことになる">
+              <img src="assets/images/cast/staff-01.png" alt="雪白" loading="lazy">
+            </button>
+            <p class="cast-gallery__name">雪白</p>
+          </li>
+          <li class="cast-gallery__item" data-role="staff">
+            <button type="button" class="lightbox-trigger" data-cast-trigger
+              data-cast-src="assets/images/cast/staff-02.png"
+              data-cast-name="どうぶつ"
+              data-cast-role="エンターテイナー"
+              data-cast-bio="好きなもの：おいしい食べ物！&#10;苦手なもの：アサリに入っている砂！&#10;年齢：どうぶつ歳だぁ！
+              「僕は生まれも育ちもどうぶつだぁ！」と主張する猫族。出身について質問してもまともな回答は期待できない。
+              「おいしい食べ物をつまみ食いしたい！」という思いからカフェで働いている。">
+              <img src="assets/images/cast/staff-02.png" alt="どうぶつ" loading="lazy">
+            </button>
+            <p class="cast-gallery__name">どうぶつ</p>
+          </li>
+          <li class="cast-gallery__item" data-role="staff">
+            <button type="button" class="lightbox-trigger" data-cast-trigger
+              data-cast-src="assets/images/cast/staff-03.png"
+              data-cast-name="リトゥス"
+              data-cast-role="儚げキャット"
+              data-cast-bio="好きなもの：珈琲、甘いお菓子、酒&#10;苦手なもの：野菜、作法&#10;年齢：7歳
+              精霊の猫族。深い森の中にある精霊の国の王子。お忍びで人間社会に紛れて暮らしている時、カフェの事を知り、人間の事をより知るために働くことになった。
+              幼い頃から色々と教えられたせいで作法やら勉強やらが嫌いになってしまった。精霊猫なので普通の猫よりも長生き。
+              スピリトゥス・フェーリス・レーグルスという王族としての名前があるが、長いせいか普段から省略してリトゥスと名乗っている。(周りもそう呼ぶことが多い)">
+              <img src="assets/images/cast/staff-03.png" alt="リトゥス" loading="lazy">
+            </button>
+            <p class="cast-gallery__name">リトゥス</p>
+          </li>
+            <li class="cast-gallery__item" data-role="staff">
+            <button type="button" class="lightbox-trigger" data-cast-trigger
+              data-cast-src="assets/images/cast/staff-04.png"
+              data-cast-name="プレン"
+              data-cast-role="謎多きサビ猫"
+              data-cast-bio="好きなもの：甘い物、正山小種、蟲と小動物(食用)、眠る事&#10;苦手なもの：大きな音、寒さ、痛いこと・恐いこと&#10;年齢：3歳
+              西の森にある古びた洋館に棲む猫。時の流れが遅い、4世紀ほど時代遅れの魔女の家で育った為、現代文明に疎い。
+              性格は臆病。だが、好奇心はある方で、偶に図太い、猫らしい猫。
+              魔女との言いつけを破り、彼女がしばらく留守にした際に都市に迷い出た。とある事情でパニックに陥ったところを店員に保護され、見習いとして働くに至る。それまでずっと森に居たので、基本的人権の適応がされてなかった、爆速で病院に予防接種に連れていかれる。魔女に飼い猫兼使い魔として仕込まれた為、給仕仕事はそこそこ。紅茶を淹れるのがルーチンだった。">
+              <img src="assets/images/cast/staff-04.png" alt="プレン" loading="lazy">
+            </button>
+            <p class="cast-gallery__name">プレン</p>
+          </li>
+          <li class="cast-gallery__item" data-role="staff">
+            <button type="button" class="lightbox-trigger" data-cast-trigger
+              data-cast-src="assets/images/cast/staff-05.png"
+              data-cast-name="かぷ"
+              data-cast-role="おっとり怖がり屋"
+              data-cast-bio="好きなもの：お酒、ちゅーる、音楽、かわいいもの&#10;苦手なもの：ホラー、辛い食べ物&#10;年齢：28歳
+              ひとみしりが強めの猫族の男性。ちょっと精神年齢がひくく引っ込み思案だけど、人間さんとお話できるよう特訓中。
+              反応は薄めだけど撫でられたりちやほやされるととても喜びます。">
+              <img src="assets/images/cast/staff-05.png" alt="かぷ" loading="lazy">
+            </button>
+            <p class="cast-gallery__name">かぷ</p>
+          </li>
+          <li class="cast-gallery__item" data-role="staff">
+            <button type="button" class="lightbox-trigger" data-cast-trigger
+              data-cast-src="assets/images/cast/staff-06.png"
+              data-cast-name="ししとう"
+              data-cast-role="甘党キャット"
+              data-cast-bio="好きなもの：甘いもの、辛いもの&#10;苦手なもの：苦いもの&#10;年齢：26
+              甘いものが大好きな猫族。新作のお菓子をいち早く味わいたくて、このカフェで働き始めた。
+              お腹が空くと、こっそり持ち込んだドーナツをお店の片隅でつまんでいることも…
+              見つかっても、笑顔でごまかせると信じている。">
+              <img src="assets/images/cast/staff-06.png" alt="ししとう" loading="lazy">
+            </button>
+            <p class="cast-gallery__name">ししとう</p>
+          </li>
+          <li class="cast-gallery__item" data-role="staff">
+            <button type="button" class="lightbox-trigger" data-cast-trigger
+              data-cast-src="assets/images/cast/staff-07.png"
+              data-cast-name="ちゃに"
+              data-cast-role="現代派猫"
+              data-cast-bio="好きなもの：お菓子、お寿司、キラキラしてるもの&#10;苦手なもの：大きな音、高い所&#10;年齢：4歳
+              現代のSNSにまみれた猫族。好奇心旺盛だけどビビり。身寄りはなく適当にブラブラ生きていた。
+              友達の鳥さんから紹介してもらって憧れのカフェで働かせてもらえることになってドキドキしている。
+              役に立てるか心配だけど接客は好きだから何とかなるか！と考えることにしたらしい。">
+              <img src="assets/images/cast/staff-07.png" alt="ちゃに" loading="lazy">
+            </button>
+            <p class="cast-gallery__name">ちゃに</p>
+          </li>
+          <li class="cast-gallery__item" data-role="backstage">
+            <button type="button" class="lightbox-trigger" data-cast-trigger
+              data-cast-src="assets/images/cast/backstage-01.png"
+              data-cast-name="店長"
+              data-cast-role="「喋る猫カフェ」店長"
+              data-cast-bio="働かないと追い出すと飼い主に言われ、仕方なく知り合いのカフェで雇われ店長をやっている。&#10;ドクターペッパーがこの世の飲み物で一番好き。">
+              <img src="assets/images/cast/backstage-01.png" alt="店長" loading="lazy">
+            </button>
+            <p class="cast-gallery__name">店長</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================
+       フッター（他ページと共通・変更なし）
+  ============================================ -->
+  <footer class="site-footer" id="contact">
+    <div class="site-footer__inner">
+      <img src="assets/images/logo-white.svg" alt="喋る猫カフェ -talk cat cafe-" class="site-footer__logo" width="180" height="59">
+
+      <ul class="site-footer__sns">
+        <li>
+          <a href="https://x.com/talkcatcafe_VR" class="social-icon" aria-label="Twitter（新X）" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/X_logo_2023.svg" alt="" width="16" height="16">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/talkcatcafe/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/Instagram_Glyph_Black.svg" alt="" width="16" height="16">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@talkcatcafe" class="social-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/youtube-123.svg" alt="" width="20" height="20">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@talkcatcafe" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/tik-tok.svg" alt="" width="20" height="20">
+          </a>
+        </li>
+      </ul>
+
+      <nav class="site-footer__nav" aria-label="フッターナビゲーション">
+        <ul class="site-footer__nav-list">
+          <li><a href="concept.html">コンセプト</a></li>
+          <li><a href="menu.html">メニュー</a></li>
+          <li><a href="store.html">店舗</a></li>
+          <li><a href="cast.html">キャスト</a></li>
+          <li><a href="system.html">システム</a></li>
+          <li><a href="guide.html">参加案内</a></li>
+          <li><a href="about.html">運営情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <p class="site-footer__copyright">&copy; 2026 喋る猫カフェ -talk cat cafe-</p>
+    </div>
+  </footer>
+
+  <div class="paw-trail" aria-hidden="true"></div>
+
+  <!-- ============================================
+       キャストプロフィールモーダル
+  ============================================ -->
+  <div class="cast-modal" data-cast-modal role="dialog" aria-modal="true" aria-label="キャストプロフィール" hidden>
+    <div class="cast-modal__backdrop" data-cast-modal-close></div>
+    <button type="button" class="cast-modal__close" data-cast-modal-close aria-label="プロフィールを閉じる">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="cast-modal__content">
+      <img class="cast-modal__image" data-cast-modal-image alt="">
+      <div class="cast-modal__profile">
+        <p class="cast-modal__name" data-cast-modal-name></p>
+        <p class="cast-modal__role" data-cast-modal-role></p>
+        <p class="cast-modal__bio" data-cast-modal-bio></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

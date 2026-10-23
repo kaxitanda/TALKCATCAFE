@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>店舗紹介 | 喋る猫カフェ -talk cat cafe- | VRChatロールプレイカフェイベント公式サイト</title>
+  <meta name="description" content="高層ビルに囲まれたビル街の交差点にたたずむ「喋る猫カフェ」の店舗の様子をご紹介します。">
+
+  <!-- Webフォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Shippori+Mincho:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS（役割ごとに分割。読み込み順が上書きの優先順位に影響します） -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <!-- このページに特有の記述のみを担当する個別CSS -->
+  <link rel="stylesheet" href="css/store.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ============================================
+       ヘッダー（他ページと共通・変更なし）
+  ============================================ -->
+  <header class="site-header is-transparent">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-header__logo">
+        <!-- 通常時のロゴと、ヒーロー上（透明状態）用の白ロゴ。
+             表示の切り替えはCSS（.is-transparent）で行う。
+             非表示側はdisplay:noneで読み上げ対象から外れるため、
+             両方に同じaltを付与して名称を常に担保する。 -->
+        <img class="site-header__logo-img site-header__logo-img--default" src="assets/images/logo.svg" alt="喋る猫カフェ -talk cat cafe-" width="180" height="59">
+        <img class="site-header__logo-img site-header__logo-img--inverse" src="assets/images/logo-white.svg" alt="喋る猫カフェ -talk cat cafe-" width="180" height="59">
+      </a>
+
+      <nav class="site-nav" aria-label="グローバルナビゲーション">
+        <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-list">
+          <span class="sr-only">メニューを開閉する</span>
+          <span class="site-nav__toggle-bar" aria-hidden="true"></span>
+        </button>
+        <ul class="site-nav__list" id="site-nav-list">
+          <li><a href="concept.html">コンセプト</a></li>
+          <li><a href="menu.html">メニュー</a></li>
+          <li><a href="store.html">店舗</a></li>
+          <li><a href="cast.html">キャスト</a></li>
+          <li><a href="system.html">システム</a></li>
+          <li><a href="guide.html">参加案内</a></li>
+          <li><a href="about.html">運営情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <!-- 次回開催日は main.js 先頭の NEXT_EVENT_DATE から自動で書き込む（全ページ共通）。
+           ここに書いた文言は、JavaScriptが無効な環境でのみ表示される予備の表示。 -->
+      <p class="site-header__badge" data-next-event>次回開催：お知らせをご確認ください</p>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================
+         ページヒーロー（コンセプト・メニューと同じ.hero--subを流用）
+    ============================================ -->
+    <section class="hero hero--sub" aria-label="店舗紹介ページ ヘッダービジュアル">
+      <div class="hero__media">
+        <img class="hero__image" src="assets/images/hero/hero-store.jpg" alt="">
+      </div>
+
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">Store</p>
+        <h1 class="hero__title">店舗紹介</h1>
+      </div>
+    </section>
+
+    <!-- ============================================
+         店舗紹介：一言（コンセプトページと同じ.page-introを流用）
+    ============================================ -->
+    <section class="page-intro reveal" aria-label="店舗紹介の一言">
+      <div class="page-intro__inner">
+        <p class="page-intro__lead">
+          インダストリアルな雰囲気にカントリーな家具を置くことで<br>都会の喧騒を忘れコーヒーを片手にくつろぐことが出来る空間を彩っています。<br><br>
+          店内は6名の相席テーブル、4人のグループテーブル、カウンターの席から構成されており、最大16名ご来店いただくことが可能です。
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         店舗紹介：フォトギャラリー（2列×可変段、クリックで拡大表示）
+    ============================================ -->
+    <section class="store-gallery reveal" aria-labelledby="store-gallery-title">
+      <div class="store-gallery__inner">
+        <h2 id="store-gallery-title" class="sr-only">店内フォトギャラリー</h2>
+        <ul class="store-gallery__list">
+          <li class="store-gallery__item">
+            <button type="button" class="lightbox-trigger" data-lightbox-trigger data-lightbox-src="assets/images/store/store-01.jpg" data-lightbox-alt="店内の様子1">
+              <img src="assets/images/store/store-01.jpg" alt="店内の様子1" loading="lazy">
+            </button>
+          </li>
+          <li class="store-gallery__item">
+            <button type="button" class="lightbox-trigger" data-lightbox-trigger data-lightbox-src="assets/images/store/store-02.jpg" data-lightbox-alt="店内の様子2">
+              <img src="assets/images/store/store-02.jpg" alt="店内の様子2" loading="lazy">
+            </button>
+          </li>
+          <li class="store-gallery__item">
+            <button type="button" class="lightbox-trigger" data-lightbox-trigger data-lightbox-src="assets/images/store/store-03.jpg" data-lightbox-alt="店内の様子3">
+              <img src="assets/images/store/store-03.jpg" alt="店内の様子3" loading="lazy">
+            </button>
+          </li>
+          <li class="store-gallery__item">
+            <button type="button" class="lightbox-trigger" data-lightbox-trigger data-lightbox-src="assets/images/store/store-04.jpg" data-lightbox-alt="店内の様子4">
+              <img src="assets/images/store/store-04.jpg" alt="店内の様子4" loading="lazy">
+            </button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================
+       フッター（他ページと共通・変更なし）
+  ============================================ -->
+  <footer class="site-footer" id="contact">
+    <div class="site-footer__inner">
+      <img src="assets/images/logo-white.svg" alt="喋る猫カフェ -talk cat cafe-" class="site-footer__logo" width="180" height="59">
+
+      <ul class="site-footer__sns">
+        <li>
+          <a href="https://x.com/talkcatcafe_VR" class="social-icon" aria-label="Twitter（新X）" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/X_logo_2023.svg" alt="" width="16" height="16">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/talkcatcafe/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/Instagram_Glyph_Black.svg" alt="" width="16" height="16">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@talkcatcafe" class="social-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/youtube-123.svg" alt="" width="20" height="20">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@talkcatcafe" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/tik-tok.svg" alt="" width="20" height="20">
+          </a>
+        </li>
+      </ul>
+
+      <nav class="site-footer__nav" aria-label="フッターナビゲーション">
+        <ul class="site-footer__nav-list">
+          <li><a href="concept.html">コンセプト</a></li>
+          <li><a href="menu.html">メニュー</a></li>
+          <li><a href="store.html">店舗</a></li>
+          <li><a href="cast.html">キャスト</a></li>
+          <li><a href="system.html">システム</a></li>
+          <li><a href="guide.html">参加案内</a></li>
+          <li><a href="about.html">運営情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <p class="site-footer__copyright">&copy; 2026 喋る猫カフェ -talk cat cafe-</p>
+    </div>
+  </footer>
+
+  <div class="paw-trail" aria-hidden="true"></div>
+
+  <!-- ============================================
+       ライトボックス（画像拡大表示）
+       店舗紹介・メニューページ等、拡大表示が必要な
+       ページ側で共通して使用する部品。
+  ============================================ -->
+  <div class="lightbox" data-lightbox role="dialog" aria-modal="true" aria-label="拡大画像" hidden>
+    <div class="lightbox__backdrop" data-lightbox-close></div>
+    <button type="button" class="lightbox__close" data-lightbox-close aria-label="拡大画像を閉じる">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <img class="lightbox__image" data-lightbox-image alt="">
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

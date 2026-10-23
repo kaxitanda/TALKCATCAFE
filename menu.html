@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>メニュー | 喋る猫カフェ -talk cat cafe- | VRChatロールプレイカフェイベント公式サイト</title>
+  <meta name="description" content="喋る猫カフェのメニューをご紹介します。コーヒー・紅茶・ソフトドリンク・アルコール・フード・デザート・エクストラサービスの各メニューを掲載しています。">
+
+  <!-- Webフォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Shippori+Mincho:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS（役割ごとに分割。読み込み順が上書きの優先順位に影響します） -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+   <!-- このページに特有の記述のみを担当する個別CSS -->
+   <link rel="stylesheet" href="css/menu.css">
+   <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ============================================
+       ヘッダー（トップページと共通・変更なし）
+  ============================================ -->
+  <header class="site-header is-transparent">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-header__logo">
+        <!-- 通常時のロゴと、ヒーロー上（透明状態）用の白ロゴ。
+             表示の切り替えはCSS（.is-transparent）で行う。
+             非表示側はdisplay:noneで読み上げ対象から外れるため、
+             両方に同じaltを付与して名称を常に担保する。 -->
+        <img class="site-header__logo-img site-header__logo-img--default" src="assets/images/logo.svg" alt="喋る猫カフェ -talk cat cafe-" width="180" height="59">
+        <img class="site-header__logo-img site-header__logo-img--inverse" src="assets/images/logo-white.svg" alt="喋る猫カフェ -talk cat cafe-" width="180" height="59">
+      </a>
+
+      <nav class="site-nav" aria-label="グローバルナビゲーション">
+        <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-list">
+          <span class="sr-only">メニューを開閉する</span>
+          <span class="site-nav__toggle-bar" aria-hidden="true"></span>
+        </button>
+        <ul class="site-nav__list" id="site-nav-list">
+          <li><a href="concept.html">コンセプト</a></li>
+          <li><a href="menu.html">メニュー</a></li>
+          <li><a href="store.html">店舗</a></li>
+          <li><a href="cast.html">キャスト</a></li>
+          <li><a href="system.html">システム</a></li>
+          <li><a href="guide.html">参加案内</a></li>
+          <li><a href="about.html">運営情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <!-- 次回開催日は main.js 先頭の NEXT_EVENT_DATE から自動で書き込む（全ページ共通）。
+           ここに書いた文言は、JavaScriptが無効な環境でのみ表示される予備の表示。 -->
+      <p class="site-header__badge" data-next-event>次回開催：お知らせをご確認ください</p>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================
+         ページヒーロー（コンセプトページと同じ.hero--subを流用）
+    ============================================ -->
+    <section class="hero hero--sub" aria-label="メニューページ ヘッダービジュアル">
+      <div class="hero__media">
+        <img class="hero__image" src="assets/images/hero/hero-menu.jpg" alt="">
+      </div>
+
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">Menu</p>
+        <h1 class="hero__title">メニュー</h1>
+      </div>
+    </section>
+
+    <!-- ============================================
+         コーヒー
+    ============================================ -->
+    <section class="menu-category reveal" id="coffee" aria-labelledby="coffee-title">
+      <div class="menu-category__inner">
+       <div class="menu-category__text">
+         <h2 id="coffee-title" class="menu-category__title">
+           <span class="menu-category__title-en">Coffee</span>
+           コーヒー
+         </h2>
+         <ul class="menu-list">
+          <li class="menu-list__item">
+             <p class="menu-list__name">ホット</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">アメリカーノ</p>
+             <p class="menu-list__price">50UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">カフェラテ</p>
+             <p class="menu-list__price">50UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">マキアート</p>
+             <p class="menu-list__price">50UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">カプチーノ</p>
+             <p class="menu-list__price">50UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">カフェモカ</p>
+             <p class="menu-list__price">50UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">エスプレッソコンパンナ</p>
+             <p class="menu-list__price">50UC</p>
+           </li>
+         </ul>
+       </div>
+     <!-- 写真は1枚固定。配置・大きさ（4:3）はカルーセルと同じ部品を流用する
+          （data-carouselと矢印を外しているため、切り替えの処理は動かない）。 -->
+     <div class="menu-category__carousel">
+       <ul class="menu-category__carousel-track">
+         <li class="menu-category__carousel-slide"><img src="assets/images/menu/coffee.jpg" alt="" loading="lazy"></li>
+       </ul>
+     </div>
+       </div>
+    </section>
+
+    <!-- ============================================
+         紅茶
+    ============================================ -->
+    <section class="menu-category reveal" id="tea" aria-labelledby="tea-title">
+      <div class="menu-category__inner">
+       <div class="menu-category__text">
+         <h2 id="tea-title" class="menu-category__title">
+           <span class="menu-category__title-en">Tea</span>
+           紅茶
+         </h2>
+         <ul class="menu-list">
+           <li class="menu-list__item">
+             <p class="menu-list__name">ホット・アイス・アイスソーダ
+             </p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">アールグレイ</p>
+             <p class="menu-list__price">50UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">ダージリン</p>
+             <p class="menu-list__price">50UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">アッサム</p>
+             <p class="menu-list__price">50UC</p>
+           </li>
+         </ul>
+       </div>
+     <!-- 写真は1枚固定。配置・大きさ（4:3）はカルーセルと同じ部品を流用する
+          （data-carouselと矢印を外しているため、切り替えの処理は動かない）。 -->
+     <div class="menu-category__carousel">
+       <ul class="menu-category__carousel-track">
+         <li class="menu-category__carousel-slide"><img src="assets/images/menu/tea.jpg" alt="" loading="lazy"></li>
+       </ul>
+     </div>
+       </div>
+    </section>
+
+    <!-- ============================================
+         ソフトドリンク・
+    ============================================ -->
+    <section class="menu-category reveal" id="soft-drink" aria-labelledby="soft-drink-title">
+      <div class="menu-category__inner">
+       <div class="menu-category__text">
+         <h2 id="soft-drink-title" class="menu-category__title">
+           <span class="menu-category__title-en">Soft Drink & alcohol</span>
+           ソフトドリンク・アルコール
+         </h2>
+         <ul class="menu-list">
+          <li class="menu-list__item">
+             <p class="menu-list__name">メロンソーダ</p>
+             <p class="menu-list__price">100UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">コーラフロート</p>
+             <p class="menu-list__price">100UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">オレンジジュース</p>
+             <p class="menu-list__price">100UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">いちごミルク</p>
+             <p class="menu-list__price">100UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">ワイン</p>
+             <p class="menu-list__price">150UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">ウィスキー</p>
+             <p class="menu-list__price">150UC</p>
+           </li>
+         </ul>
+       </div>
+     <!-- 写真は1枚固定。配置・大きさ（4:3）はカルーセルと同じ部品を流用する
+          （data-carouselと矢印を外しているため、切り替えの処理は動かない）。 -->
+     <div class="menu-category__carousel">
+       <ul class="menu-category__carousel-track">
+         <li class="menu-category__carousel-slide"><img src="assets/images/menu/soft-drink.jpg" alt="" loading="lazy"></li>
+       </ul>
+     </div>
+       </div>
+    </section>
+
+    <!-- ============================================
+         フード
+    ============================================ -->
+    <section class="menu-category reveal" id="food" aria-labelledby="food-title">
+      <div class="menu-category__inner">
+       <div class="menu-category__text">
+         <h2 id="food-title" class="menu-category__title">
+           <span class="menu-category__title-en">Food</span>
+           フード
+         </h2>
+         <ul class="menu-list">
+           <li class="menu-list__item">
+             <p class="menu-list__name">ベーコン&ソーセージ</p>
+             <p class="menu-list__price">100UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">スキレット&サンド</p>
+             <p class="menu-list__price">100UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">目玉焼きプレート</p>
+             <p class="menu-list__price">100UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">卵焼きプレート</p>
+             <p class="menu-list__price">100UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">落書きオムライス</p>
+             <p class="menu-list__price">250UC</p>
+           </li>
+         </ul>
+       </div>
+     <!-- 写真は1枚固定。配置・大きさ（4:3）はカルーセルと同じ部品を流用する
+          （data-carouselと矢印を外しているため、切り替えの処理は動かない）。 -->
+     <div class="menu-category__carousel">
+       <ul class="menu-category__carousel-track">
+         <li class="menu-category__carousel-slide"><img src="assets/images/menu/food.jpg" alt="" loading="lazy"></li>
+       </ul>
+     </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         デザート
+    ============================================ -->
+    <section class="menu-category reveal" id="dessert" aria-labelledby="dessert-title">
+      <div class="menu-category__inner">
+       <div class="menu-category__text">
+         <h2 id="dessert-title" class="menu-category__title">
+           <span class="menu-category__title-en">Dessert</span>
+           デザート
+         </h2>
+         <ul class="menu-list">
+           <li class="menu-list__item">
+             <p class="menu-list__name">ショートケーキ</p>
+             <p class="menu-list__price">100UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">チョコレートケーキ</p>
+             <p class="menu-list__price">100UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">チーズケーキ</p>
+             <p class="menu-list__price">100UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">ミルクレープ</p>
+             <p class="menu-list__price">100UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">デコレーションパフェ</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">リトルパフェ</p>
+             <p class="menu-list__price">200UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">レギュラーパフェ</p>
+             <p class="menu-list__price">500UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">キングパフェ</p>
+             <p class="menu-list__price">750UC</p>
+           </li>
+         </ul>
+       </div>
+     <!-- 写真は1枚固定。配置・大きさ（4:3）はカルーセルと同じ部品を流用する
+          （data-carouselと矢印を外しているため、切り替えの処理は動かない）。 -->
+     <div class="menu-category__carousel">
+       <ul class="menu-category__carousel-track">
+         <li class="menu-category__carousel-slide"><img src="assets/images/menu/dessert.jpg" alt="" loading="lazy"></li>
+       </ul>
+     </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         スペシャル
+    ============================================ -->
+    <section class="menu-category reveal" id="special" aria-labelledby="special-title">
+      <div class="menu-category__inner">
+       <div class="menu-category__text">
+         <h2 id="special-title" class="menu-category__title">
+           <span class="menu-category__title-en">EXTRA</span>
+           エクストラサービス
+         </h2>
+         <ul class="menu-list">
+           <li class="menu-list__item">
+             <p class="menu-list__name">ねこじゃらしレンタル</p>
+             <p class="menu-list__price">100UC</p>
+           </li>
+          <li class="menu-list__item">
+             <p class="menu-list__name">ナデナデ</p>
+             <p class="menu-list__price">500UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">ちゅーる</p>
+             <p class="menu-list__price">200UC</p>
+           </li>
+           <li class="menu-list__item">
+             <p class="menu-list__name">2ショットチェキ</p>
+             <p class="menu-list__price">300UC</p>
+           </li>
+            <li class="menu-list__item">
+             <p class="menu-list__name">全員集合チェキ</p>
+             <p class="menu-list__price">1000UC</p>
+           </li>
+
+
+         </ul>
+       </div>
+     <!-- 写真は1枚固定。配置・大きさ（4:3）はカルーセルと同じ部品を流用する
+          （data-carouselと矢印を外しているため、切り替えの処理は動かない）。 -->
+     <div class="menu-category__carousel">
+       <ul class="menu-category__carousel-track">
+         <li class="menu-category__carousel-slide"><img src="assets/images/menu/special.jpg" alt="" loading="lazy"></li>
+       </ul>
+     </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================
+       フッター（トップページと共通・変更なし）
+  ============================================ -->
+  <footer class="site-footer" id="contact">
+    <div class="site-footer__inner">
+      <img src="assets/images/logo-white.svg" alt="喋る猫カフェ -talk cat cafe-" class="site-footer__logo" width="180" height="59">
+
+      <ul class="site-footer__sns">
+        <li>
+          <a href="https://x.com/talkcatcafe_VR" class="social-icon" aria-label="Twitter（新X）" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/X_logo_2023.svg" alt="" width="16" height="16">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/talkcatcafe/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/Instagram_Glyph_Black.svg" alt="" width="16" height="16">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@talkcatcafe" class="social-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/youtube-123.svg" alt="" width="20" height="20">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@talkcatcafe" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/tik-tok.svg" alt="" width="20" height="20">
+          </a>
+        </li>
+      </ul>
+
+      <nav class="site-footer__nav" aria-label="フッターナビゲーション">
+        <ul class="site-footer__nav-list">
+          <li><a href="concept.html">コンセプト</a></li>
+          <li><a href="menu.html">メニュー</a></li>
+          <li><a href="store.html">店舗</a></li>
+          <li><a href="cast.html">キャスト</a></li>
+          <li><a href="system.html">システム</a></li>
+          <li><a href="guide.html">参加案内</a></li>
+          <li><a href="about.html">運営情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <p class="site-footer__copyright">&copy; 2026 喋る猫カフェ -talk cat cafe-</p>
+    </div>
+  </footer>
+
+  <div class="paw-trail" aria-hidden="true"></div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+/* ============================================
+   responsive.css
+   メディアクエリ（ブレイクポイント: 1150px / 1024px / 768px / 480px）
+   1150pxは、ヘッダーのナビ（8項目）・ロゴ・開催バッジが1行に収まらなくなる幅。
+   ナビの項目を増減した場合は、この幅も見直すこと。
+   layout.cssの記述をPC基準としているため、ここでは
+   画面幅が狭くなるにつれて上書きしていく方式（max-width）を取る。
+   ============================================ */
+
+/* ---------- nav: 1150px以下（ナビゲーションをハンバーガー化） ----------
+   ナビが8項目あり、これより狭い幅ではロゴ・ナビ・開催バッジが
+   1行に収まらず、ナビの文字が折り返してヘッダーが縦に伸びるため、
+   この幅からフルスクリーンメニューに切り替える。 */
+@media (max-width: 1150px) {
+
+  /* ハンバーガーボタンを表示 */
+  .site-nav__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* 情報過多になるため、ヘッダー上の開催バッジは非表示にし、
+     案内はお知らせティッカー側に任せる */
+  .site-header__badge {
+    display: none;
+  }
+
+  /* ナビゲーションを画面全体を覆うフルスクリーンメニューに変更。
+     普段はtranslateYで画面外（上）に逃がしておく。
+     開閉の実処理（is-openクラスの付け外し）はJS側で行う。 */
+  .site-nav__list {
+    position: fixed;
+    inset: 0;
+    z-index: calc(var(--z-header) - 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-5);
+    background-color: var(--color-base);
+    transform: translateY(-100%);
+    transition: transform var(--transition-slow);
+  }
+  .site-nav__list.is-open {
+    transform: translateY(0);
+  }
+  .site-nav__list a {
+    font-size: var(--fs-lg);
+  }
+  /* フルスクリーンメニューの背景は--color-baseのため、
+     透明状態のヘッダー内であっても、メニュー内のリンクは
+     通常の配色に戻す（開閉アニメーション中の白文字化を防ぐ）。 */
+  .site-header.is-transparent .site-nav__list a {
+    color: var(--color-text);
+  }
+  .site-header.is-transparent .site-nav__list a::after {
+    background-color: var(--color-accent-green);
+  }
+}
+
+/* ---------- lg: 1024px以下（タブレット横向きなど） ---------- */
+@media (max-width: 1024px) {
+  /* キャスト紹介：2列（項目の幅を2分割に上書き） */
+  .cast-digest__item,
+  .cast-gallery__item {
+    flex-basis: calc((100% - var(--space-5)) / 2);
+  }
+
+  .digest {
+    padding-block: var(--space-7);
+  }
+  .page-intro,
+  .requirements {
+    padding-block: var(--space-7);
+  }
+}
+
+/* ---------- md: 768px以下（タブレット縦向き・スマートフォン） ---------- */
+@media (max-width: 768px) {
+
+  /* キャスト紹介：2列（項目の幅を2分割に上書き） */
+  .cast-digest__item,
+  .cast-gallery__item {
+    flex-basis: calc((100% - var(--space-5)) / 2);
+  }
+   /* メニュー／独自システム共通：左右分割を縦積みに変更する */
+   .menu-category__inner,
+   .system-category__inner {
+     flex-direction: column;
+     align-items: stretch;
+   }
+   .menu-category__text,
+   .system-category__text {
+     flex: none;
+   }
+   .menu-category__carousel,
+   .system-category__carousel {
+     width: 100%;
+     aspect-ratio: 16 / 9;
+     flex: none;
+   }
+   .store-gallery__inner {
+     padding-inline: var(--space-4);
+   }
+   /* お問い合わせ：窓口カードを縦積みにする */
+   .contact-links__list {
+     grid-template-columns: 1fr;
+   }
+   /* お知らせ一覧：カードを2列にする */
+   .news-archive__list {
+     grid-template-columns: repeat(2, 1fr);
+   }
+   .info-digest__inner {
+     flex-direction: column;
+     padding-inline: var(--space-4);
+   }
+   .cast-modal__content {
+     flex-direction: column;
+     max-height: 90vh;
+     overflow-y: auto;
+   }
+   .cast-modal__image {
+     width: 100%;
+     height: 240px;
+   }
+   .cast-modal__profile {
+     padding: var(--space-4);
+     overflow-y: visible;
+   }
+}
+
+/* ---------- sm: 480px以下（スマートフォン） ---------- */
+@media (max-width: 480px) {
+  .digest {
+    padding-block: var(--space-6);
+  }
+  .digest__inner {
+    gap: var(--space-3);
+  }
+   .info-digest__inner {
+     gap: var(--space-3);
+     padding-inline: var(--space-3);
+   }
+
+  .page-intro,
+  .requirements {
+    padding-block: var(--space-6);
+  }
+
+  /* キャスト紹介：1列（一覧の幅を280pxに絞って中央に置き、項目は全幅） */
+  .cast-digest__list,
+  .cast-gallery__list {
+    max-width: 280px;
+    margin-inline: auto;
+  }
+  .cast-digest__item,
+  .cast-gallery__item {
+    flex-basis: 100%;
+  }
+
+   .store-gallery__list {
+     gap: var(--space-3);
+   }
+
+  /* お知らせ一覧：カードを1列にする */
+  .news-archive__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- タッチデバイスへの配慮 ----------
+   カスタムカーソルはマウスの「ホバー」概念があって初めて成立する演出。
+   スマートフォン等ホバーを持たないデバイスでは、円がタップ位置に
+   残り続けるなど不自然な挙動になるため非表示にする。
+   幅（px）ではなく「ホバー可能か」という操作特性で判定する点が
+   ここまでのブレイクポイントとは異なる。 */
+@media (hover: none), (pointer: coarse) {
+  .paw-trail { 
+    display: none;
+  }
+}

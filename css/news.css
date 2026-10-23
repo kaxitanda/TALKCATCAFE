@@ -1,0 +1,135 @@
+/* ============================================
+   news.css
+   お知らせ関連ページに特有の記述のみを担当する。
+   ・一覧ページ（news.html）：カード形式の一覧
+   ・記事ページ（news-template.html と、それを複製した news-◯◯◯.html）
+   セクションの上下余白・共通コンテナはlayout.css側の共通グループ、
+   カードの箱（背景・角丸・影）はcomponents.css側の.news__cardの
+   グループに統合済み。日付の見た目はトップページのお知らせ欄と
+   同じ.news__dateを流用している。
+   列数の切り替え（2列・1列）はresponsive.css側が担当する。
+   ============================================ */
+
+/* ---------- 一覧ページ：カードの並び ----------
+   最大960pxの列に3列で並べる。カードは行ごとに高さを揃える。 */
+.news-archive__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+/* カード全体を1つのリンクにする。
+   角丸の外にサムネイルがはみ出さないよう、overflow: hiddenで切り取る。 */
+.news-archive__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.news-archive__thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform var(--transition-base);
+}
+
+.news-archive__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+}
+
+/* トップページより大きく表示するため、一覧ページ内でのみ日付を一段大きくする */
+.news-archive__body .news__date {
+  font-size: var(--fs-sm);
+}
+
+.news-archive__title {
+  font-size: var(--fs-md);
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--color-main-dark);
+  transition: color var(--transition-base);
+}
+
+/* ホバー時：サムネイルを軽く拡大し、タイトルを緑にする */
+.news-archive__link:hover .news-archive__thumb {
+  transform: scale(1.03);
+}
+.news-archive__link:hover .news-archive__title {
+  color: var(--color-accent-green);
+}
+
+/* ---------- 記事の列 ----------
+   読みやすさのため、本文の列を最大720pxに絞って中央に置く */
+.news-article__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 720px;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* ---------- 記事の見出し（日付＋タイトル） ---------- */
+.news-article__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+.news-article__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-main-dark);
+}
+
+/* ---------- 本文 ----------
+   本文内の要素はクラスを付けずに書けるよう、
+   .news-article__body を起点にした子孫セレクタで指定する。 */
+.news-article__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  font-size: var(--fs-base);
+  line-height: 1.9;
+}
+.news-article__body h3 {
+  margin-top: var(--space-3);
+  font-family: var(--font-heading);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--color-main-dark);
+}
+.news-article__body img {
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+/* reset.cssで消した箇条書きの記号を、記事本文の中でのみ戻す */
+.news-article__body ul {
+  padding-left: 1.5em;
+  list-style: disc;
+}
+/* reset.cssでリンクの色・下線を消しているため、本文中では明示的に付与する。
+   長いURLを直接書いた場合でも、狭い画面ではみ出さないよう折り返す。 */
+.news-article__body a {
+  color: var(--color-accent-green);
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+  transition: opacity var(--transition-base);
+}
+.news-article__body a:hover {
+  opacity: 0.7;
+}
+
+/* 「お知らせ一覧へ戻る」：縦並びの中で横幅いっぱいに伸びないよう左端に寄せる */
+.news-article__inner .link-more {
+  align-self: flex-start;
+}

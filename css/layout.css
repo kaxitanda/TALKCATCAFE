@@ -1,0 +1,604 @@
+/* ============================================
+   layout.css
+   Flexbox / Grid によるページ骨組み
+   色・装飾（角丸/背景色/ホバー等）はcomponents.cssに委ね、
+   このファイルは「配置・余白・サイズ」のみを担当する。
+   ============================================ */
+
+/* ---------- 共通コンテナパターン ----------
+   ヘッダー内・各ダイジェストセクション内・フッター内は
+   いずれも「最大幅1200pxで中央寄せ、左右に余白」という
+   同一パターンを使う。重複を避けるため、複数セレクタを
+   まとめて指定する（グループセレクタ）。 */
+.site-header__inner,
+.digest__inner,
+.site-footer__inner,
+.news__inner,
+.requirements__inner,
+.menu-category__inner,
+.store-gallery__inner,
+.cast-gallery__inner,
+.system-category__inner,
+.info-digest__inner,
+.contact-links__inner,
+.news-archive__inner {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* ---------- ヘッダー ----------
+   ヒーローの上に重ねて透明表示するため、stickyではなくfixedで
+   画面上部に固定する（文書の流れから外れるため、ヒーローは
+   ヘッダーの真下ではなくページ最上部から始まる）。
+   状態クラスの付け外しはmain.js側が担当する。
+   ・.is-transparent：ヒーロー上（配色はcomponents.cssが担当）
+   ・.is-hidden     ：下スクロール時の非表示（画面外へ逃がす）
+   表示中はtransformを指定しない（none）こと。transformが残ると、
+   内側のフルスクリーンメニュー（position: fixed）がヘッダー基準で
+   配置されてしまい、768px以下のメニューが崩れる。 */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-header);
+  width: 100%;
+}
+.site-header.is-hidden {
+  transform: translateY(-100%);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-3);
+}
+
+.site-nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* ハンバーガーボタンはデスクトップでは非表示。
+   表示切り替えの条件（何px以下で出すか）はresponsive.cssが担当する。
+   768px以下のフルスクリーンメニュー（z-index: --z-header - 1）より
+   前面に出すため、配置指定とz-indexを付与する。
+   比較はヘッダー（.site-header）内の重なり順で行われるため、
+   メニューの値を1つ上回る--z-headerを指定すれば最前面になる。
+   これがないと、メニューを開いた際にボタンがメニューの下に隠れ、
+   閉じる操作ができなくなる。 */
+.site-nav__toggle {
+  display: none;
+  position: relative;
+  z-index: var(--z-header);
+  padding: var(--space-2);
+}
+
+/* 3本線のアイコンをspan1つ＋疑似要素2つで作る。
+   要素を増やさず表現できるため、HTML側をシンプルに保てる。 */
+.site-nav__toggle-bar {
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 2px;
+}
+.site-nav__toggle-bar::before,
+.site-nav__toggle-bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+}
+.site-nav__toggle-bar::before { top: -8px; }
+.site-nav__toggle-bar::after { top: 8px; }
+
+.site-header__badge {
+  white-space: nowrap;
+  font-size: var(--fs-sm);
+}
+
+/* ロゴの出し分け：通常時は濃色ロゴ、透明状態では白ロゴのみを表示する */
+.site-header__logo-img--inverse {
+  display: none;
+}
+.site-header.is-transparent .site-header__logo-img--default {
+  display: none;
+}
+.site-header.is-transparent .site-header__logo-img--inverse {
+  display: block;
+}
+
+/* ---------- ヒーロー ---------- */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 100svh: スマホでアドレスバーの表示/非表示により
+     ビューポート高さが変動しても、実際に見えている範囲を
+     基準に高さを取ってくれる単位。100vhだと下端が
+     アドレスバーに隠れる問題が起きやすい。 */
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__video,
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+  padding: var(--space-4);
+}
+
+.hero--sub {
+   min-height: 40svh;
+ }
+
+/* ---------- お知らせ ---------- */
+.news {
+  padding-block: var(--space-6);
+}
+.news__card,
+.contact-links__card {
+  max-width: 480px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5);
+}
+.news__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.news__item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding-block: var(--space-2);
+}
+.news__cta,
+.contact-links__cta {
+  align-self: center;
+  min-width: 200px;
+}
+
+
+ /* ---------- ページ本文：中央配置の説明ブロック ----------
+    下層ページ共通で使う、リード文を1本だけ中央に配置する
+    シンプルなセクション。今後、他ページの導入文にも流用する想定。 */
+ .page-intro {
+   padding-block: var(--space-8);
+ }
+ .page-intro__inner {
+   max-width: 720px;
+   margin-inline: auto;
+   padding-inline: var(--space-4);
+   text-align: center;
+ }
+
+ /* ---------- お問い合わせ：窓口カードの並び ----------
+    カードの箱（最大幅・余白・縦並び）は.news__cardと共通。
+    ここでは2枚を横に並べる配置と、カード内の中央揃えのみを扱う。
+    .news__cardのmargin-inline: autoはグリッド内では幅を縮めてしまうため、
+    width: 100%で各列いっぱい（最大480px）に広げる。
+    768px以下での縦積みはresponsive.css側が担当する。 */
+ .contact-links__list {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: var(--space-5);
+ }
+ .contact-links__card {
+   width: 100%;
+   text-align: center;
+ }
+
+ /* ---------- 参加資格・注意事項 ---------- */
+ .requirements {
+   padding-block: var(--space-8);
+ }
+ .requirements__list {
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-6);
+   max-width: 720px;
+   margin-inline: auto;
+ }
+ .requirements__block {
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-2);
+ }
+
+
+/* ---------- ダイジェストセクション共通 ---------- */
+.digest,
+.menu-category,
+.store-gallery,
+.cast-gallery,
+.system-category,
+.contact-links,
+.news-archive,
+.news-article {
+  padding-block: var(--space-8);
+}
+
+/* コンセプト／独自システムのみ、背景にうっすら写真を敷く。
+   ::before を絶対配置で敷き、本文（.digest__inner）は
+   position:relative + z-index:1 で必ずその上に乗るようにする。
+   画像そのもの（url指定）や透明度はcomponents.css側で指定する。 */
+.concept-digest,
+.system-digest {
+  position: relative;
+  overflow: hidden;
+}
+.concept-digest::before,
+.system-digest::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.concept-digest .digest__inner,
+.system-digest .digest__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.digest__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.section-title,
+.menu-category__title,
+.system-category__title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.link-more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* 料理紹介・キャスト紹介のCTAだけ、テキストリンクではなく
+   横長の中央配置ボタンにするための補助クラス。
+   .digest__inner は align-items: flex-start（左寄せ）だが、
+   align-self でこの要素だけ個別に中央寄せへ上書きする。 */
+.digest__cta {
+  align-self: center;
+  min-width: 240px;
+  margin-top: var(--space-2);
+}
+
+/* ---------- 料理紹介：横スクロールマーキー ----------
+   7品目をループさせたいという要件のため、Grid（表組み）から
+   「中身を複製して連続的に流すFlexbox」という構造に変更した。
+   .menu-marquee が枠（overflow: hidden ではみ出しを隠す）、
+   .menu-marquee__track がアニメーションで動く本体、
+   .menu-marquee__group が実際の項目群（これを2セット並べる）。 */
+.menu-marquee {
+  width: 100%;
+  overflow: hidden;
+}
+.menu-marquee__track {
+  display: flex;
+  width: max-content;
+}
+.menu-marquee__group {
+  display: flex;
+  gap: var(--space-4);
+  padding-inline: var(--space-2);
+}
+.menu-digest__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
+  /* flex-shrink:0 がないと、幅が足りない時に項目が
+     押し潰されて縮んでしまう。マーキーでは常に等幅を保ちたいため必須。 */
+  flex-shrink: 0;
+  width: 176px;
+}
+
+.filter-toggle {
+   display: flex;
+   flex-wrap: wrap;
+   gap: var(--space-2);
+}
+
+/* ---------- カテゴリー：左（文章）＋右（カルーセル）の分割 ----------
+   メニューページ（.menu-category__◯◯）と独自システムページ
+   （.system-category__◯◯）は同一の構造・見た目のため、
+   グループセレクタで共通化する。
+   左：右＝4：6の比率。高さは固定せず、左の文章列は項目数・
+   文章量に応じて下へ伸びる。右のカルーセルは左の高さに
+   引き伸ばされないよう上揃え（flex-start）にし、大きさは
+   縦横比（4:3）で決める（画面幅に応じて拡縮する）。
+   色・角丸・矢印の装飾はcomponents.css側が担当し、
+   768px以下での縦積みはresponsive.css側が担当する。 */
+.menu-category__inner,
+.system-category__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+.menu-category__text,
+.system-category__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex: 4;
+}
+
+/* カルーセル本体。.trackを横一列に並べ、translateXで
+   1枚分ずつずらして表示する（切り替えの実処理はmain.js側）。
+   overflow: hiddenで、枠外のスライドを隠す。
+   高さは幅に対する縦横比（4:3）で決まり、左の列の高さには影響されない。
+   画像はobject-fit: coverのため、比率が異なる画像も歪まずに切り抜かれる。 */
+.menu-category__carousel,
+.system-category__carousel {
+  position: relative;
+  flex: 6;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.menu-category__carousel-track,
+.system-category__carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.menu-category__carousel-slide,
+.system-category__carousel-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+}
+.menu-category__carousel-slide img,
+.system-category__carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.menu-category__carousel-arrow,
+.system-category__carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+.menu-category__carousel-arrow--prev,
+.system-category__carousel-arrow--prev {
+  left: var(--space-2);
+}
+.menu-category__carousel-arrow--next,
+.system-category__carousel-arrow--next {
+  right: var(--space-2);
+}
+
+/* ---------- キャスト紹介：3列（1行に満たない分は中央寄せ） ----------
+   グリッドでは1行に満たない項目を中央へ寄せられないため、
+   flex-wrap＋justify-content: centerで並べる。
+   各項目の幅は「(全幅 − 列間の余白の合計) ÷ 列数」に固定し、
+   3名ちょうどの時はグリッドと同じ見た目になる。
+   列数の切り替え（2列・1列）はresponsive.css側で、
+   項目の幅（flex-basis）を上書きして行う。
+   店員／裏方の切り替えで非表示になった項目はdisplay: noneのため、
+   表示中の項目だけで中央に揃う。 */
+.cast-digest__list,
+.cast-gallery__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-5);
+  width: 100%;
+}
+.cast-digest__item,
+.cast-gallery__item {
+  flex: 0 0 calc((100% - var(--space-5) * 2) / 3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+/* ---------- 店舗紹介：1枚の代表画像 ---------- */
+.store-digest__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* ---------- フッター ---------- */
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding-block: var(--space-7);
+  text-align: center;
+}
+
+.site-footer__sns {
+  display: flex;
+  gap: var(--space-4);
+}
+
+ /* ---------- フッターナビゲーション ----------
+    ヘッダーの.site-nav__listとは異なり、開閉の挙動を持たない
+    単純なページ内リンクの一覧。id重複を避ける意味も兼ねて
+    独立したクラス名で新規に用意する。 */
+ .site-footer__nav-list {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: var(--space-4);
+ }
+
+ /* ---------- 肉球トレイル（カーソルの足跡演出） ----------
+    .paw-trailは画面全体を覆う土台（position: fixed）。
+    実際の足跡（.paw-print）はmain.js側がマウス移動のたびに
+    生成し、この中へ動的に追加していく。座標（left/top）と
+    向き（rotate）はJS側がインラインstyleで指定するため、
+    ここではサイズと基準となる配置方法（position: absolute）
+    のみを扱う。 */
+ .paw-trail {
+   position: fixed;
+   inset: 0;
+   pointer-events: none;
+   z-index: var(--z-cursor);
+ }
+ .paw-print {
+   position: absolute;
+   width: 28px;
+   height: 28px;
+   pointer-events: none;
+ }
+
+ /* ---------- ライトボックス（画像拡大表示） ----------
+    店舗紹介・メニューページ等、複数ページで共通利用する部品のため、
+    ページ固有CSSではなくlayout.css側に配置する。
+    .lightboxが画面全体を覆う土台、.lightbox__backdropがクリックで
+    閉じるための背景、.lightbox__imageが拡大画像本体、
+    .lightbox__closeが右上の閉じるボタンを担当する。 */
+ .lightbox, 
+ .cast-modal {
+   position: fixed;
+   inset: 0;
+   z-index: var(--z-lightbox);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: var(--space-4);
+ }
+ .lightbox[hidden],
+ .cast-modal[hidden] {
+   display: none;
+ }
+
+ .lightbox__backdrop,
+ .cast-modal__backdrop {
+   position: absolute;
+   inset: 0;
+ }
+ .lightbox__image {
+   position: relative;
+   max-width: 100%;
+   max-height: 100%;
+   width: auto;
+   height: auto;
+ }
+ .lightbox__close,
+ .cast-modal__close {
+   position: absolute;
+   top: var(--space-4);
+   right: var(--space-4);
+   width: 44px;
+   height: 44px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+
+ /* ---------- アコーディオン（開閉式の一覧） ----------
+    HTML標準の<details>／<summary>で開閉する汎用部品
+    （現状は運営情報ページのアセットリストで使用）。
+    開閉の印（▼）は疑似要素の枠線2辺で描き、サイズと配置のみを
+    ここで指定する。色・回転・ブラウザ標準マーカーの非表示は
+    components.css側が担当する。 */
+ .accordion__summary {
+   display: inline-flex;
+   align-items: center;
+   gap: var(--space-2);
+   padding-block: var(--space-1);
+ }
+ .accordion__summary::after {
+   content: '';
+   width: 8px;
+   height: 8px;
+ }
+ .accordion__list {
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-3);
+   margin-top: var(--space-3);
+ }
+ .accordion__item {
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-1);
+ }
+
+ /* 拡大表示のトリガーとなる要素（サムネイルを包むbutton）。
+    button要素はreset.cssで背景/枠線が既に除去されているため、
+    ここではグリッド内で画像いっぱいに広がるための指定のみ行う。 */
+ .lightbox-trigger {
+   display: block;
+   width: 100%;
+ }
+
+/* ---------- アクセシビリティ用ユーティリティ ----------
+   視覚的には隠すが、スクリーンリーダーには読み上げさせたい
+   要素に付与するクラス（display:noneでは読み上げも消えてしまう）。 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+ .menu-list__item.is-hidden,
+ .cast-gallery__item.is-hidden {
+   display: none;
+ }
