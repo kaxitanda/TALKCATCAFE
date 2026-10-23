@@ -40,10 +40,21 @@
     gap: var(--space-5);
     background-color: var(--color-base);
     transform: translateY(-100%);
-    transition: transform var(--transition-slow);
+    /* 閉じている間は、位置に関係なく必ず見えなくする。
+       ヘッダーが隠れる時（.site-header.is-hidden）はヘッダーにtransformが
+       付き、このメニュー（position: fixed）が画面ではなくヘッダー基準で
+       配置されるため、translateYだけではリンクがはみ出して見えてしまう。
+       非表示への切り替えは、閉じるアニメーション（0.6秒）の終了後に行う。
+       ※--transition-slowは「0.6s ease」とイージングを含み、
+         待ち時間の指定には使えないため、ここのみ秒数を直接書く。
+       閉じている間はTabキーでもリンクに移動しなくなる。 */
+    visibility: hidden;
+    transition: transform var(--transition-slow), visibility 0s linear 0.6s;
   }
   .site-nav__list.is-open {
     transform: translateY(0);
+    visibility: visible;
+    transition: transform var(--transition-slow), visibility 0s;
   }
   .site-nav__list a {
     font-size: var(--fs-lg);
