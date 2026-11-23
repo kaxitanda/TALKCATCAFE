@@ -27,7 +27,7 @@
   ============================================ -->
   <header class="site-header is-transparent">
     <div class="site-header__inner">
-      <a href="index.html" class="site-header__logo">
+      <a href="./" class="site-header__logo">
         <!-- 通常時のロゴと、ヒーロー上（透明状態）用の白ロゴ。
              表示の切り替えはCSS（.is-transparent）で行う。
              非表示側はdisplay:noneで読み上げ対象から外れるため、
@@ -42,14 +42,14 @@
           <span class="site-nav__toggle-bar" aria-hidden="true"></span>
         </button>
         <ul class="site-nav__list" id="site-nav-list">
-          <li><a href="concept.html">コンセプト</a></li>
-          <li><a href="menu.html">メニュー</a></li>
-          <li><a href="store.html">店舗</a></li>
-          <li><a href="cast.html">キャスト</a></li>
-          <li><a href="system.html">システム</a></li>
-          <li><a href="guide.html">参加案内</a></li>
-          <li><a href="about.html">運営情報</a></li>
-          <li><a href="contact.html">お問い合わせ</a></li>
+          <li><a href="concept">コンセプト</a></li>
+          <li><a href="menu">メニュー</a></li>
+          <li><a href="store">店舗</a></li>
+          <li><a href="cast">キャスト</a></li>
+          <li><a href="system">システム</a></li>
+          <li><a href="guide">参加案内</a></li>
+          <li><a href="about">運営情報</a></li>
+          <li><a href="contact">お問い合わせ</a></li>
         </ul>
       </nav>
 
@@ -83,7 +83,7 @@
          サムネイルには、各記事ページのヒーロー画像と同じ画像を使う。
          記事を追加する場合は、先頭に.news-archive__itemの<li>を1つ追加し、
          以下を書き換える。
-         ・リンク先（news-◯◯◯.html）
+         ・リンク先（news-◯◯◯。末尾の .html は付けない）
          ・サムネイル画像（記事ページのヒーロー画像と同じパス。例：assets/images/news/news-001.jpg）
          ・日付（datetimeと表示の両方）
          ・タイトル
@@ -96,7 +96,7 @@
         <h2 id="news-archive-title" class="sr-only">お知らせ一覧</h2>
         <ul class="news-archive__list">
           <li class="news-archive__item">
-            <a href="news-000.html" class="news-archive__link">
+            <a href="news-000" class="news-archive__link">
               <img class="news-archive__thumb" src="assets/images/news/news-000.jpg" alt="" loading="lazy">
               <div class="news-archive__body">
                 <time class="news__date" datetime="2026-10-23">2026.10.23</time>
@@ -105,7 +105,7 @@
             </a>
           </li>
           <li class="news-archive__item">
-            <a href="news-002.html" class="news-archive__link">
+            <a href="news-002" class="news-archive__link">
               <img class="news-archive__thumb" src="assets/images/news/news-002.jpg" alt="" loading="lazy">
               <div class="news-archive__body">
                 <time class="news__date" datetime="2026-11-23">2026.11.23</time>
@@ -151,14 +151,14 @@
 
       <nav class="site-footer__nav" aria-label="フッターナビゲーション">
         <ul class="site-footer__nav-list">
-          <li><a href="concept.html">コンセプト</a></li>
-          <li><a href="menu.html">メニュー</a></li>
-          <li><a href="store.html">店舗</a></li>
-          <li><a href="cast.html">キャスト</a></li>
-          <li><a href="system.html">システム</a></li>
-          <li><a href="guide.html">参加案内</a></li>
-          <li><a href="about.html">運営情報</a></li>
-          <li><a href="contact.html">お問い合わせ</a></li>
+          <li><a href="concept">コンセプト</a></li>
+          <li><a href="menu">メニュー</a></li>
+          <li><a href="store">店舗</a></li>
+          <li><a href="cast">キャスト</a></li>
+          <li><a href="system">システム</a></li>
+          <li><a href="guide">参加案内</a></li>
+          <li><a href="about">運営情報</a></li>
+          <li><a href="contact">お問い合わせ</a></li>
         </ul>
       </nav>
 
